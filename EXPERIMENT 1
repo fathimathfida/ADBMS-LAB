@@ -1,0 +1,31 @@
+ create table employe(emp_id int primary key,name varchar(15),city varchar(20),dob date,adhar_no int);
+Query OK, 0 rows affected (0.29 sec)
+
+mysql> desc employe;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| emp_id   | int(11)     | NO   | PRI | NULL    |       |
+| name     | varchar(15) | YES  |     | NULL    |       |
+| city     | varchar(20) | YES  |     | NULL    |       |
+| dob      | date        | YES  |     | NULL    |       |
+| adhar_no | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+
+
+create table STUDENT(roll_no int primary key,name varchar(20) not null,age int check(age>99),address varchar(30),gender varchar(20) default'm');
+Query OK, 0 rows affected (0.85 sec)
+
+mysql> desc STUDENT;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll_no | int(11)     | NO   | PRI | NULL    |       |
+| name    | varchar(20) | NO   |     | NULL    |       |
+| age     | int(11)     | YES  |     | NULL    |       |
+| address | varchar(30) | YES  |     | NULL    |       |
+| gender  | varchar(20) | YES  |     | m       |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
