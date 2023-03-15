@@ -1,4 +1,4 @@
- create table employe(emp_id int primary key,name varchar(15),city varchar(20),dob date,adhar_no int);
+1. create table employe(emp_id int primary key,name varchar(15),city varchar(20),dob date,adhar_no int);
 Query OK, 0 rows affected (0.29 sec)
 
 mysql> desc employe;
@@ -15,7 +15,7 @@ mysql> desc employe;
 
 
 
-create table STUDENT(roll_no int primary key,name varchar(20) not null,age int check(age>99),address varchar(30),gender varchar(20) default'm');
+2.create table STUDENT(roll_no int primary key,name varchar(20) not null,age int check(age>99),address varchar(30),gender varchar(20) default'm');
 Query OK, 0 rows affected (0.85 sec)
 
 mysql> desc STUDENT;
@@ -29,3 +29,71 @@ mysql> desc STUDENT;
 | gender  | varchar(20) | YES  |     | m       |       |
 +---------+-------------+------+-----+---------+-------+
 5 rows in set (0.00 sec)
+
+
+3.create temporary table STUDENT1 select * from STUDENT;
+Query OK, 0 rows affected (0.00 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc STUDENT1;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll_no | int(11)     | NO   |     | NULL    |       |
+| name    | varchar(20) | NO   |     | NULL    |       |
+| age     | int(11)     | YES  |     | NULL    |       |
+| address | varchar(30) | YES  |     | NULL    |       |
+| gender  | varchar(20) | YES  |     | m       |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+
+
+4.create table if not exists EMPLOYEE_DUP select * from employe;
+Query OK, 0 rows affected (0.31 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+ desc EMPLOYEE_DUP;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| emp_id   | int(11)     | NO   |     | NULL    |       |
+| name     | varchar(15) | YES  |     | NULL    |       |
+| city     | varchar(20) | YES  |     | NULL    |       |
+| dob      | date        | YES  |     | NULL    |       |
+| adhar_no | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+
+5.create database INVOICE;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use INVOICE;
+Database changed
+create table CUSTOMER(id int primary key,name varchar(20)not null,address varchar(20) not null,city varchar(20),ph_no int);
+Query OK, 0 rows affected (0.49 sec)
+
+mysql> desc CUSTOMER;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | int(11)     | NO   | PRI | NULL    |       |
+| name    | varchar(20) | NO   |     | NULL    |       |
+| address | varchar(20) | NO   |     | NULL    |       |
+| city    | varchar(20) | YES  |     | NULL    |       |
+| ph_no   | int(11)     | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+create table PRODUCT(pid int primary key,pname varchar(20) not null,price decimal(5,2) default 0);
+Query OK, 0 rows affected (0.35 sec)
+
+mysql> desc PRODUCT;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| pid   | int(11)      | NO   | PRI | NULL    |       |
+| pname | varchar(20)  | NO   |     | NULL    |       |
+| price | decimal(5,2) | YES  |     | 0.00    |       |
++-------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
