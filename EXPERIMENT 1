@@ -85,6 +85,9 @@ mysql> desc CUSTOMER;
 | ph_no   | int(11)     | YES  |     | NULL    |       |
 +---------+-------------+------+-----+---------+-------+
 5 rows in set (0.00 sec)
+
+
+
 create table PRODUCT(pid int primary key,pname varchar(20) not null,price decimal(5,2) default 0);
 Query OK, 0 rows affected (0.35 sec)
 
@@ -110,5 +113,20 @@ mysql> desc INVOICE_master;
 | inv_id   | int(11) | NO   | PRI | NULL    |       |
 | id       | int(11) | YES  | MUL | NULL    |       |
 | inv_date | date    | YES  |     | NULL    |       |
++----------+---------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+
+
+ create table INVOICE_item(inv_id int,pid int,quantity int,foreign key(inv_id) references INVOICE_master(inv_id),foreign key(pid) references PRODUCT(pid));
+
+mysql> desc INVOICE_item;
++----------+---------+------+-----+---------+-------+
+| Field    | Type    | Null | Key | Default | Extra |
++----------+---------+------+-----+---------+-------+
+| inv_id   | int(11) | YES  | MUL | NULL    |       |
+| pid      | int(11) | YES  | MUL | NULL    |       |
+| quantity | int(11) | YES  |     | NULL    |       |
 +----------+---------+------+-----+---------+-------+
 3 rows in set (0.00 sec)
