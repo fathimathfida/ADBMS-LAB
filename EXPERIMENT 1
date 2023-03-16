@@ -97,3 +97,18 @@ mysql> desc PRODUCT;
 | price | decimal(5,2) | YES  |     | 0.00    |       |
 +-------+--------------+------+-----+---------+-------+
 3 rows in set (0.00 sec)
+
+
+
+mysql> create table INVOICE_master(inv_id int primary key,id int,inv_date date,foreign key(id)references CUSTOMER(id));
+Query OK, 0 rows affected (1.45 sec)
+
+mysql> desc INVOICE_master;
++----------+---------+------+-----+---------+-------+
+| Field    | Type    | Null | Key | Default | Extra |
++----------+---------+------+-----+---------+-------+
+| inv_id   | int(11) | NO   | PRI | NULL    |       |
+| id       | int(11) | YES  | MUL | NULL    |       |
+| inv_date | date    | YES  |     | NULL    |       |
++----------+---------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
