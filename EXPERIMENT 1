@@ -1,4 +1,8 @@
-1. create table employe(emp_id int primary key,name varchar(15),city varchar(20),dob date,adhar_no int);
+                              EXP 1.1: DDL COMMANDS
+                               *********************
+QUESTION???????
+
+MYSQL>create table employe(emp_id int primary key,name varchar(15),city varchar(20),dob date,adhar_no int);
 Query OK, 0 rows affected (0.29 sec)
 
 mysql> desc employe;
@@ -15,7 +19,7 @@ mysql> desc employe;
 
 
 
-2.create table STUDENT(roll_no int primary key,name varchar(20) not null,age int check(age>99),address varchar(30),gender varchar(20) default'm');
+MYSQL>create table STUDENT(roll_no int primary key,name varchar(20) not null,age int check(age>99),address varchar(30),gender varchar(20) default'm');
 Query OK, 0 rows affected (0.85 sec)
 
 mysql> desc STUDENT;
@@ -130,3 +134,7 @@ mysql> desc INVOICE_item;
 | quantity | int(11) | YES  |     | NULL    |       |
 +----------+---------+------+-----+---------+-------+
 3 rows in set (0.00 sec)
+
+
+//ADD QUESTION
+//ADD MYSQL> BEFORE EACH QUERY
