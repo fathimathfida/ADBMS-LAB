@@ -1,6 +1,7 @@
                               EXP 1.1: DDL COMMANDS
                                *********************
-1.create a table employee
+ a) DDL COMMANDS-CREATE
+ 1. Create a table EMPLOYEE have the following fields (emp_id, name,city,dob,adhar_no)
 
 MYSQL>create table employe(emp_id int primary key,name varchar(15),city varchar(20),dob date,adhar_no int);
 Query OK, 0 rows affected (0.29 sec)
@@ -18,6 +19,13 @@ mysql> desc employe;
 5 rows in set (0.00 sec)
 
 
+2.Create a table STUDENT have the fields(roll_no, name, age, address, gender)and add following constraints on it.
+
+
+               Roll_no – Primary key
+               Name – does not allow null values
+               Age- must be in between (0-99), does not allow null values
+               Gender- default value is ‘m’
 
 MYSQL>create table STUDENT(roll_no int primary key,name varchar(20) not null,age int check(age>99),address varchar(30),gender varchar(20) default'm');
 Query OK, 0 rows affected (0.85 sec)
@@ -35,7 +43,8 @@ mysql> desc STUDENT;
 5 rows in set (0.00 sec)
 
 
-3.create temporary table STUDENT1 select * from STUDENT;
+3.Create a temporary table STUDENT1 of STUDENT relation.
+create temporary table STUDENT1 select * from STUDENT;
 Query OK, 0 rows affected (0.00 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
@@ -52,8 +61,8 @@ mysql> desc STUDENT1;
 5 rows in set (0.00 sec)
 
 
-
-4.create table if not exists EMPLOYEE_DUP select * from employe;
+4.Create a duplicate table of EMPLOYEE.
+  create table if not exists EMPLOYEE_DUP select * from employe;
 Query OK, 0 rows affected (0.31 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
@@ -70,7 +79,14 @@ Records: 0  Duplicates: 0  Warnings: 0
 5 rows in set (0.00 sec)
 
 
-5.create database INVOICE;
+5.Create an INVOICE database and having following tables.
+
+                      Customer(id, name, address, city, ph_no)
+                      Product(pid,  pname, price (default 0))
+                      Invoice_master(inv_id, cust_id(FK), inv_date)
+                      Invoice_item(inv_id (FK),  pid(FK), quantity)
+                      
+create database INVOICE;
 Query OK, 1 row affected (0.00 sec)
 
 mysql> use INVOICE;
@@ -136,11 +152,10 @@ mysql> desc INVOICE_item;
 3 rows in set (0.00 sec)
 
 
-//ADD QUESTION
-//ADD MYSQL> BEFORE EACH QUERY
 
 
-b.DDL COMMANDS-ALTER & DROP
+
+b)DDL COMMANDS-ALTER & DROP
 
 1.Add a column 'ssn'at the first position in the table employee.
 
