@@ -311,3 +311,5 @@ mysql> SHOW TABLES;
 | teacher        |
 +----------------+
 9 rows in set (0.00 sec)
+
+//VERIFIED
