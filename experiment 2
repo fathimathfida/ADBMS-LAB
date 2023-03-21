@@ -1,0 +1,61 @@
+mysql> insert into employe values(011,'siya','kannur',2001,896709456),(022,'nidha','kozhikode',2002,675489064),(033,'neha','kannur',1987,784503488),(044,'sana','kohikode',2003,766756894),(055,'liya','kohikode',2004,566756894);
+Query OK, 5 rows affected (0.07 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM employe;
++------+-------+-----------+------+-----------+
+| SSN  | name  | city      | dob  | adhar_no  |
++------+-------+-----------+------+-----------+
+|   11 | siya  | kannur    | 2001 | 896709456 |
+|   22 | nidha | kozhikode | 2002 | 675489064 |
+|   33 | neha  | kannur    | 1987 | 784503488 |
+|   44 | sana  | kohikode  | 2003 | 766756894 |
+|   55 | liya  | kohikode  | 2004 | 566756894 |
++------+-------+-----------+------+-----------+
+5 rows in set (0.00 sec)
+
+
+
+mysql> insert into STUDENT values(001,'Mariyam',21,'kannur','f'),(002,'Ameena',22,'kozhikode','f'),(003,'Aysha',23,'kannur','f'),(004,'Hanna',20,'kozhikode','f'),(005,'Sana',21,'kannur','m');                                                                                                 Query OK, 5 rows affected (0.05 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+mysql> INSERT INTO STUDENT VALUES(005,'John',24,'kannur','m');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select * from STUDENT;
++---------+---------+------+-----------+--------+
+| roll_no | name    | age  | address   | gender |
++---------+---------+------+-----------+--------+
+|       1 | Mariyam |   21 | kannur    | f      |
+|       2 | Ameena  |   22 | kozhikode | f      |
+|       3 | Aysha   |   23 | kannur    | f      |
+|       4 | Hanna   |   20 | kozhikode | f      |
+|       5 | John    |   24 | kannur    | m      |
++---------+---------+------+-----------+--------+
+5 rows in set (0.00 sec)
+
+
+
+
+
+mysql> use INVOICE;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+
+
+mysql> insert into CUSTOMER values(001,'priya','kozhikode','kannur','2378959'),(002,'siya','kannur','kozhikode','2378594'),(003,'nidha','kollam','kannur','2356976'),(004,'diya','kannur','kozhikode','2356746'),(005,'naza','kozhikode','kannur','2376789');
+Query OK, 5 rows affected (0.14 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM CUSTOMER;
++----+-------+-----------+-----------+---------+
+| id | name  | address   | city      | ph_no   |
++----+-------+-----------+-----------+---------+
+|  1 | priya | kozhikode | kannur    | 2378959 |
+|  2 | siya  | kannur    | kozhikode | 2378594 |
+|  3 | nidha | kollam    | kannur    | 2356976 |
+|  4 | diya  | kannur    | kozhikode | 2356746 |
+|  5 | naza  | kozhikode | kannur    | 2376789 |
++----+-------+-----------+-----------+---------+
+5 rows in set (0.01 sec)
