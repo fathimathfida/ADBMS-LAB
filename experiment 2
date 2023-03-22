@@ -103,3 +103,24 @@ mysql> select * FROM INVOICE_master;
 6 rows in set (0.00 sec)
 
 
+
+
+mysql> INSERT INTO INVOICE_item VALUES(011,011,3),(022,022,1),(033,033,1),(044,044,4),(055,055,5);
+Query OK, 5 rows affected (0.03 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * FROM INVOICE_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|     11 |   11 |        3 |
+|     22 |   22 |        1 |
+|     33 |   33 |        1 |
+|     44 |   44 |        4 |
+|     55 |   55 |        5 |
++--------+------+----------+
+5 rows in set (0.00 sec)
+
+
+
+
