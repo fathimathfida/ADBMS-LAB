@@ -44,6 +44,8 @@ You can turn off this feature to get a quicker startup with -A
 Database changed
 
 
+
+
 mysql> insert into CUSTOMER values(001,'priya','kozhikode','kannur','2378959'),(002,'siya','kannur','kozhikode','2378594'),(003,'nidha','kollam','kannur','2356976'),(004,'diya','kannur','kozhikode','2356746'),(005,'naza','kozhikode','kannur','2376789');
 Query OK, 5 rows affected (0.14 sec)
 Records: 5  Duplicates: 0  Warnings: 0
@@ -59,3 +61,26 @@ mysql> SELECT * FROM CUSTOMER;
 |  5 | naza  | kozhikode | kannur    | 2376789 |
 +----+-------+-----------+-----------+---------+
 5 rows in set (0.01 sec)
+
+
+
+
+
+
+
+mysql> insert into PRODUCT values(011,'Bag',700.00),(022,'Book',200.00),(033,'soap',100.00),(044,'candy',90.00),(055,'Laundry detergent',70.00);
+Query OK, 5 rows affected (0.06 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM PRODUCT;
++-----+-------------------+--------+
+| pid | pname             | price  |
++-----+-------------------+--------+
+|  11 | Bag               | 700.00 |
+|  22 | Book              | 200.00 |
+|  33 | soap              | 100.00 |
+|  44 | candy             |  90.00 |
+|  55 | Laundry detergent |  70.00 |
++-----+-------------------+--------+
+5 rows in set (0.00 sec)
+
