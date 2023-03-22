@@ -123,4 +123,51 @@ mysql> select * FROM INVOICE_item;
 
 
 
+mysql> select * FROM CUSTOMER;
++----+-------+-----------+-----------+---------+
+| id | name  | address   | city      | ph_no   |
++----+-------+-----------+-----------+---------+
+|  1 | priya | kozhikode | kannur    | 2378959 |
+|  2 | siya  | kannur    | kozhikode | 2378594 |
+|  3 | nidha | kollam    | kannur    | 2356976 |
+|  4 | diya  | kannur    | kozhikode | 2356746 |
+|  5 | naza  | kozhikode | kannur    | 2376789 |
+|  6 | sana  | kannur    | kozhikode | 2378965 |
++----+-------+-----------+-----------+---------+
+6 rows in set (0.00 sec)
+mysql> UPDATE CUSTOMER SET address='Kochi',city='Trissur',ph_no=2357987 WHERE id=5;
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * FROM CUSTOMER;
++----+-------+-----------+-----------+---------+
+| id | name  | address   | city      | ph_no   |
++----+-------+-----------+-----------+---------+
+|  1 | priya | kozhikode | kannur    | 2378959 |
+|  2 | siya  | kannur    | kozhikode | 2378594 |
+|  3 | nidha | kollam    | kannur    | 2356976 |
+|  4 | diya  | kannur    | kozhikode | 2356746 |
+|  5 | naza  | Kochi     | Trissur   | 2357987 |
+|  6 | sana  | kannur    | kozhikode | 2378965 |
++----+-------+-----------+-----------+---------+
+6 rows in set (0.00 sec)
+
+mysql> UPDATE CUSTOMER SET address='Kochi',city='Trissur',ph_no=2357987 WHERE id=5;
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * FROM CUSTOMER;
++----+-------+-----------+-----------+---------+
+| id | name  | address   | city      | ph_no   |
++----+-------+-----------+-----------+---------+
+|  1 | priya | kozhikode | kannur    | 2378959 |
+|  2 | siya  | kannur    | kozhikode | 2378594 |
+|  3 | nidha | kollam    | kannur    | 2356976 |
+|  4 | diya  | kannur    | kozhikode | 2356746 |
+|  5 | naza  | Kochi     | Trissur   | 2357987 |
+|  6 | sana  | kannur    | kozhikode | 2378965 |
++----+-------+-----------+-----------+---------+
+6 rows in set (0.00 sec)
+
+
 
