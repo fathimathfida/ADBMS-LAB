@@ -323,4 +323,103 @@ mysql> SELECT * FROM CUSTOMER;
  
 2. Delete all purchase details of items its quantity less than 2. 
 
+mysql> SELECT * FROM INVOICE_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|     22 |   22 |        1 |
+|     33 |   33 |        1 |
+|     44 |   44 |        4 |
+|     55 |   55 |        5 |
++--------+------+----------+
+4 rows in set (0.00 sec)
 
+mysql> DELETE FROM INVOICE_item WHERE quantity<2;
+Query OK, 2 rows affected (0.05 sec)
+
+mysql> SELECT * FROM INVOICE_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|     44 |   44 |        4 |
+|     55 |   55 |        5 |
++--------+------+----------+
+2 rows in set (0.00 sec)
+
+
+ 3. Delete the purchase details of product ‘pen’ in the in_id ‘101’. 
+mysql> SELECT * FROM PRODUCT;
++-----+-------------------+--------+
+| pid | pname             | price  |
++-----+-------------------+--------+
+|  11 | Bag               | 204.00 |
+|  22 | Book              | 204.00 |
+|  33 | soap              | 102.00 |
+|  44 | candy             |  91.80 |
+|  55 | Laundry detergent |  71.40 |
++-----+-------------------+--------+
+5 rows in set (0.00 sec)
+mysql> select * FROM INVOICE_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|     44 |   44 |        4 |
+|     55 |   55 |        5 |
++--------+------+----------+
+2 rows in set (0.00 sec)
+
+mysql> delete from INVOICE_item WHERE inv_id=44  AND pid=44;
+Query OK, 1 row affected (0.08 sec)
+mysql> select * FROM INVOICE_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|     55 |   55 |        5 |
++--------+------+----------+
+1 row in set (0.00 sec)
+
+
+
+mysql> delete from PRODUCT WHERE pid=44;
+Query OK, 1 row affected (0.06 sec)
+
+mysql> SELECT * FROM PRODUCT;
++-----+-------------------+--------+
+| pid | pname             | price  |
++-----+-------------------+--------+
+|  11 | Bag               | 204.00 |
+|  22 | Book              | 204.00 |
+|  33 | soap              | 102.00 |
+|  55 | Laundry detergent |  71.40 |
++-----+-------------------+--------+
+4 rows in set (0.00 sec)
+
+
+4. Delete details of employees who does not have phone number. 
+mysql> SELECT * FROM CUSTOMER;
++----+-------+---------+-----------+---------+
+| id | name  | address | city      | ph_no   |
++----+-------+---------+-----------+---------+
+|  2 | siya  | kannur  | Calicut   | 2378594 |
+|  3 | nidha | kollam  | kannur    | 2356976 |
+|  4 | diya  | kannur  | Calicut   | 2356746 |
+|  5 | naza  | Kochi   | Trissur   | 2357987 |
+|  6 | sana  | kannur  | Calicut   | 2378965 |
+|  7 | Hasna | calicut | kozhikode |    NULL |
++----+-------+---------+-----------+---------+
+6 rows in set (0.00 sec)
+
+mysql> DELETE FROM CUSTOMER WHERE ph_no IS NULL;
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM CUSTOMER;
++----+-------+---------+---------+---------+
+| id | name  | address | city    | ph_no   |
++----+-------+---------+---------+---------+
+|  2 | siya  | kannur  | Calicut | 2378594 |
+|  3 | nidha | kollam  | kannur  | 2356976 |
+|  4 | diya  | kannur  | Calicut | 2356746 |
+|  5 | naza  | Kochi   | Trissur | 2357987 |
+|  6 | sana  | kannur  | Calicut | 2378965 |
++----+-------+---------+---------+---------+
+5 rows in set (0.00 sec)
