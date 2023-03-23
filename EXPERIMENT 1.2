@@ -1,3 +1,8 @@
+1.2 DML COMMANDS 
+      a) DML COMMANDS-INSERT
+
+1.Insert values in EMPLOYEE table.
+
 mysql> insert into employe values(011,'siya','kannur',2001,896709456),(022,'nidha','kozhikode',2002,675489064),(033,'neha','kannur',1987,784503488),(044,'sana','kohikode',2003,766756894),(055,'liya','kohikode',2004,566756894);
 Query OK, 5 rows affected (0.07 sec)
 Records: 5  Duplicates: 0  Warnings: 0
@@ -15,6 +20,7 @@ mysql> SELECT * FROM employe;
 5 rows in set (0.00 sec)
 
 
+2.Insert values in STUDENT table
 
 mysql> insert into STUDENT values(001,'Mariyam',21,'kannur','f'),(002,'Ameena',22,'kozhikode','f'),(003,'Aysha',23,'kannur','f'),(004,'Hanna',20,'kozhikode','f'),(005,'Sana',21,'kannur','m');                                                                                                 Query OK, 5 rows affected (0.05 sec)
 Records: 5  Duplicates: 0  Warnings: 0
@@ -35,16 +41,13 @@ mysql> select * from STUDENT;
 
 
 
-
+3.Insert values in INVOICE database
 
 mysql> use INVOICE;
 Reading table information for completion of table and column names
 You can turn off this feature to get a quicker startup with -A
 
 Database changed
-
-
-
 
 mysql> insert into CUSTOMER values(001,'priya','kozhikode','kannur','2378959'),(002,'siya','kannur','kozhikode','2378594'),(003,'nidha','kollam','kannur','2356976'),(004,'diya','kannur','kozhikode','2356746'),(005,'naza','kozhikode','kannur','2376789');
 Query OK, 5 rows affected (0.14 sec)
@@ -61,8 +64,6 @@ mysql> SELECT * FROM CUSTOMER;
 |  5 | naza  | kozhikode | kannur    | 2376789 |
 +----+-------+-----------+-----------+---------+
 5 rows in set (0.01 sec)
-
-
 
 
 
@@ -104,7 +105,6 @@ mysql> select * FROM INVOICE_master;
 
 
 
-
 mysql> INSERT INTO INVOICE_item VALUES(011,011,3),(022,022,1),(033,033,1),(044,044,4),(055,055,5);
 Query OK, 5 rows affected (0.03 sec)
 Records: 5  Duplicates: 0  Warnings: 0
@@ -122,8 +122,10 @@ mysql> select * FROM INVOICE_item;
 5 rows in set (0.00 sec)
 
 
-
-
+ 
+   b)DML COMMANDS- UPDATE
+ 
+1.Update the price of a particular product.    
 
 1.mysql> SELECT * FROM PRODUCT;
 +-----+-------------------+--------+
@@ -153,7 +155,72 @@ mysql> SELECT * FROM PRODUCT;
 +-----+-------------------+--------+
 5 rows in set (0.00 sec)
 
+2. Change the name of city ‘Kozhikode’ to ‘Calicut’ in the customer table. 
 
+mysql> SELECT * FROM CUSTOMER;
++----+-------+-----------+-----------+---------+
+| id | name  | address   | city      | ph_no   |
++----+-------+-----------+-----------+---------+
+|  1 | priya | kozhikode | kannur    | 2378959 |
+|  2 | siya  | kannur    | kozhikode | 2378594 |
+|  3 | nidha | kollam    | kannur    | 2356976 |
+|  4 | diya  | kannur    | kozhikode | 2356746 |
+|  5 | naza  | Kochi     | Trissur   | 2357987 |
+|  6 | sana  | kannur    | kozhikode | 2378965 |
++----+-------+-----------+-----------+---------+
+6 rows in set (0.00 sec)
+
+mysql> UPDATE CUSTOMER SET City="Calicut" WHERE City="Kozhikode";
+Query OK, 3 rows affected (0.07 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> SELECT * FROM CUSTOMER;
++----+-------+-----------+---------+---------+
+| id | name  | address   | city    | ph_no   |
++----+-------+-----------+---------+---------+
+|  1 | priya | kozhikode | kannur  | 2378959 |
+|  2 | siya  | kannur    | Calicut | 2378594 |
+|  3 | nidha | kollam    | kannur  | 2356976 |
+|  4 | diya  | kannur    | Calicut | 2356746 |
+|  5 | naza  | Kochi     | Trissur | 2357987 |
+|  6 | sana  | kannur    | Calicut | 2378965 |
++----+-------+-----------+---------+---------+
+6 rows in set (0.00 sec)
+
+
+
+3. Update all prices with 2% of its original price. 
+mysql> SELECT * FROM PRODUCT;
++-----+-------------------+--------+
+| pid | pname             | price  |
++-----+-------------------+--------+
+|  11 | Bag               | 200.00 |
+|  22 | Book              | 200.00 |
+|  33 | soap              | 100.00 |
+|  44 | candy             |  90.00 |
+|  55 | Laundry detergent |  70.00 |
++-----+-------------------+--------+
+5 rows in set (0.00 sec)
+
+mysql>  UPDATE PRODUCT SET price=price+(price*2/100);
+Query OK, 5 rows affected (0.06 sec)
+Rows matched: 5  Changed: 5  Warnings: 0
+
+mysql> SELECT * FROM PRODUCT;
++-----+-------------------+--------+
+| pid | pname             | price  |
++-----+-------------------+--------+
+|  11 | Bag               | 204.00 |
+|  22 | Book              | 204.00 |
+|  33 | soap              | 102.00 |
+|  44 | candy             |  91.80 |
+|  55 | Laundry detergent |  71.40 |
++-----+-------------------+--------+
+5 rows in set (0.00 sec)
+
+
+
+4. Change the address, city, phone number of a particular customer. 
 
 mysql> select * FROM CUSTOMER;
 +----+-------+-----------+-----------+---------+
@@ -183,3 +250,36 @@ mysql> select * FROM CUSTOMER;
 |  6 | sana  | kannur    | kozhikode | 2378965 |
 +----+-------+-----------+-----------+---------+
 6 rows in set (0.00 sec)
+
+
+5. Change the quantity of a purchased product of inv_id ‘11’
+
+mysql> SELECT * FROM INVOICE_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|     11 |   11 |        3 |
+|     22 |   22 |        1 |
+|     33 |   33 |        1 |
+|     44 |   44 |        4 |
+|     55 |   55 |        5 |
++--------+------+----------+
+5 rows in set (0.00 sec)
+
+mysql> UPDATE INVOICE_item SET quantity=7 WHERE inv_id=11;
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM INVOICE_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|     11 |   11 |        7 |
+|     22 |   22 |        1 |
+|     33 |   33 |        1 |
+|     44 |   44 |        4 |
+|     55 |   55 |        5 |
++--------+------+----------+
+5 rows in set (0.00 sec)
+
+
