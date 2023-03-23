@@ -283,3 +283,44 @@ mysql> SELECT * FROM INVOICE_item;
 5 rows in set (0.00 sec)
 
 
+     c) DML COMMAND- DELETE
+     
+1. Delete the record of customer id ‘10001’. 
+
+mysql> SELECT * FROM CUSTOMER;
++----+-------+-----------+---------+---------+
+| id | name  | address   | city    | ph_no   |
++----+-------+-----------+---------+---------+
+|  1 | priya | kozhikode | kannur  | 2378959 |
+|  2 | siya  | kannur    | Calicut | 2378594 |
+|  3 | nidha | kollam    | kannur  | 2356976 |
+|  4 | diya  | kannur    | Calicut | 2356746 |
+|  5 | naza  | Kochi     | Trissur | 2357987 |
+|  6 | sana  | kannur    | Calicut | 2378965 |
++----+-------+-----------+---------+---------+
+6 rows in set (0.00 sec)
+mysql>  DELETE FROM INVOICE_item WHERE inv_id=11 and pid=11;
+Query OK, 1 row affected (0.06 sec)
+
+mysql>  DELETE FROM INVOICE_master WHERE id=1;
+Query OK, 1 row affected (0.12 sec)
+
+mysql>  DELETE FROM CUSTOMER WHERE id=1;
+Query OK, 1 row affected (0.06 sec)
+
+mysql> SELECT * FROM CUSTOMER;
++----+-------+---------+---------+---------+
+| id | name  | address | city    | ph_no   |
++----+-------+---------+---------+---------+
+|  2 | siya  | kannur  | Calicut | 2378594 |
+|  3 | nidha | kollam  | kannur  | 2356976 |
+|  4 | diya  | kannur  | Calicut | 2356746 |
+|  5 | naza  | Kochi   | Trissur | 2357987 |
+|  6 | sana  | kannur  | Calicut | 2378965 |
++----+-------+---------+---------+---------+
+5 rows in set (0.00 sec)
+
+ 
+2. Delete all purchase details of items its quantity less than 2. 
+
+
