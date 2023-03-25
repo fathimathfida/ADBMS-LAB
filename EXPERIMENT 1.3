@@ -1,0 +1,172 @@
+    a) TCL COMMANDS
+
+
+1. Commit
+
+use fida;
+Database changed
+mysql> SET AUTOCOMMIT=OFF;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from employe;
++------+-------+-----------+------+-----------+
+| SSN  | name  | city      | dob  | adhar_no  |
++------+-------+-----------+------+-----------+
+|   11 | siya  | kannur    | 2001 | 896709456 |
+|   22 | nidha | kozhikode | 2002 | 675489064 |
+|   33 | neha  | kannur    | 1987 | 784503488 |
+|   44 | sana  | kohikode  | 2003 | 766756894 |
+|   55 | liya  | kohikode  | 2004 | 566756894 |
++------+-------+-----------+------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> INSERT INTO employe VALUES(066,'naza','mahe',1998,878756567);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from employe;
++------+-------+-----------+------+-----------+
+| SSN  | name  | city      | dob  | adhar_no  |
++------+-------+-----------+------+-----------+
+|   11 | siya  | kannur    | 2001 | 896709456 |
+|   22 | nidha | kozhikode | 2002 | 675489064 |
+|   33 | neha  | kannur    | 1987 | 784503488 |
+|   44 | sana  | kohikode  | 2003 | 766756894 |
+|   55 | liya  | kohikode  | 2004 | 566756894 |
+|   66 | naza  | mahe      | 1998 | 878756567 |
++------+-------+-----------+------+-----------+
+6 rows in set (0.00 sec)
+
+`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+ 2.    Rollback
+ 
+ mysql> select * from employe;
++------+-------+-----------+------+-----------+
+| SSN  | name  | city      | dob  | adhar_no  |
++------+-------+-----------+------+-----------+
+|   11 | siya  | kannur    | 2001 | 896709456 |
+|   22 | nidha | kozhikode | 2002 | 675489064 |
+|   33 | neha  | kannur    | 1987 | 784503488 |
+|   44 | sana  | kohikode  | 2003 | 766756894 |
+|   55 | liya  | kohikode  | 2004 | 566756894 |
+|   66 | naza  | mahe      | 1998 | 878756567 |
++------+-------+-----------+------+-----------+
+6 rows in set (0.01 sec)
+
+
+mysql>  INSERT INTO employe VALUES(077,'sreya','kannur',2002,878756565);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from employe;
++------+-------+-----------+------+-----------+
+| SSN  | name  | city      | dob  | adhar_no  |
++------+-------+-----------+------+-----------+
+|   11 | siya  | kannur    | 2001 | 896709456 |
+|   22 | nidha | kozhikode | 2002 | 675489064 |
+|   33 | neha  | kannur    | 1987 | 784503488 |
+|   44 | sana  | kohikode  | 2003 | 766756894 |
+|   55 | liya  | kohikode  | 2004 | 566756894 |
+|   66 | naza  | mahe      | 1998 | 878756567 |
+|   77 | sreya | kannur    | 2002 | 878756565 |
++------+-------+-----------+------+-----------+
+7 rows in set (0.00 sec)
+
+mysql>  ROLLBACK;
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> select * from employe;
++------+-------+-----------+------+-----------+
+| SSN  | name  | city      | dob  | adhar_no  |
++------+-------+-----------+------+-----------+
+|   11 | siya  | kannur    | 2001 | 896709456 |
+|   22 | nidha | kozhikode | 2002 | 675489064 |
+|   33 | neha  | kannur    | 1987 | 784503488 |
+|   44 | sana  | kohikode  | 2003 | 766756894 |
+|   55 | liya  | kohikode  | 2004 | 566756894 |
++------+-------+-----------+------+-----------+
+5 rows in set (0.00 sec)
+
+``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+3.Savepoint
+
+
+mysql>  INSERT INTO employe VALUES(077,'sreya','kannur',2002,878756565);
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  ROLLBACK;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> select * from employe;
++------+-------+-----------+------+-----------+
+| SSN  | name  | city      | dob  | adhar_no  |
++------+-------+-----------+------+-----------+
+|   11 | siya  | kannur    | 2001 | 896709456 |
+|   22 | nidha | kozhikode | 2002 | 675489064 |
+|   33 | neha  | kannur    | 1987 | 784503488 |
+|   44 | sana  | kohikode  | 2003 | 766756894 |
+|   55 | liya  | kohikode  | 2004 | 566756894 |
++------+-------+-----------+------+-----------+
+5 rows in set (0.00 sec)
+
+mysql>  INSERT INTO employe VALUES(077,'anusree','kannur',2002,878756565);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SAVEPOINT A;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> COMMIT;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql>  INSERT INTO employe VALUES(088,'Hanna','Thrissur',2001,978756565);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SAVEPOINT B;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>  INSERT INTO employe VALUES(099,'anjana','Wayanad',1999,758756565);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SAVEPOINT C;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from employe;
++------+---------+-----------+------+-----------+
+| SSN  | name    | city      | dob  | adhar_no  |
++------+---------+-----------+------+-----------+
+|   11 | siya    | kannur    | 2001 | 896709456 |
+|   22 | nidha   | kozhikode | 2002 | 675489064 |
+|   33 | neha    | kannur    | 1987 | 784503488 |
+|   44 | sana    | kohikode  | 2003 | 766756894 |
+|   55 | liya    | kohikode  | 2004 | 566756894 |
+|   77 | anusree | kannur    | 2002 | 878756565 |
+|   88 | Hanna   | Thrissur  | 2001 | 978756565 |
+|   99 | anjana  | Wayanad   | 1999 | 758756565 |
++------+---------+-----------+------+-----------+
+8 rows in set (0.00 sec)
+
+
+mysql> ROLLBACK TO B;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from employe;
++------+---------+-----------+------+-----------+
+| SSN  | name    | city      | dob  | adhar_no  |
++------+---------+-----------+------+-----------+
+|   11 | siya    | kannur    | 2001 | 896709456 |
+|   22 | nidha   | kozhikode | 2002 | 675489064 |
+|   33 | neha    | kannur    | 1987 | 784503488 |
+|   44 | sana    | kohikode  | 2003 | 766756894 |
+|   55 | liya    | kohikode  | 2004 | 566756894 |
+|   77 | anusree | kannur    | 2002 | 878756565 |
+|   88 | Hanna   | Thrissur  | 2001 | 978756565 |
++------+---------+-----------+------+-----------+
+7 rows in set (0.00 sec)
+
+`````````````````````````````````````````````````````````````````````````````````````
+
+b) DCL COMMAND
+
+          Create two users user1, user2
+         1.GRANT
+                ->Give insert and select privilege to user 1 on customer table in the invoice database.
+                ->Give update and delete privilege to user 2 on all tables in the invoice database.
