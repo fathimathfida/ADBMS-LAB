@@ -423,3 +423,57 @@ mysql> SELECT * FROM CUSTOMER;
 |  6 | sana  | kannur  | Calicut | 2378965 |
 +----+-------+---------+---------+---------+
 5 rows in set (0.00 sec)
+
+
+
+5. Delete all records from STUDENT table. 
+
+mysql> select * from STUDENT;
++---------+---------+------+-----------+--------+
+| roll_no | name    | age  | address   | gender |
++---------+---------+------+-----------+--------+
+|       1 | Mariyam |   21 | kannur    | f      |
+|       2 | Ameena  |   22 | kozhikode | f      |
+|       3 | Aysha   |   23 | kannur    | f      |
+|       4 | Hanna   |   20 | kozhikode | f      |
+|       5 | John    |   24 | kannur    | m      |
++---------+---------+------+-----------+--------+
+5 rows in set (0.00 sec)
+
+mysql>  DELETE FROM STUDENT;
+Query OK, 5 rows affected (0.06 sec)
+
+mysql> select * from STUDENT;
+Empty set (0.00 sec)
+
+
+
+6. Delete Invoice details of a particular customer.
+
+mysql> SELECT * FROM INVOICE_master;
++--------+------+------------+
+| inv_id | id   | inv_date   |
++--------+------+------------+
+|     22 |    2 | 2021-03-16 |
+|     33 |    3 | 2019-09-27 |
+|     44 |    4 | 2019-06-15 |
+|     55 |    5 | 2020-05-20 |
+|     66 |    6 | 2023-07-25 |
++--------+------+------------+
+5 rows in set (0.00 sec)
+
+mysql>  DELETE FROM INVOICE_master WHERE id=3;
+Query OK, 1 row affected (0.19 sec)
+
+mysql> SELECT * FROM INVOICE_master;
++--------+------+------------+
+| inv_id | id   | inv_date   |
++--------+------+------------+
+|     22 |    2 | 2021-03-16 |
+|     44 |    4 | 2019-06-15 |
+|     55 |    5 | 2020-05-20 |
+|     66 |    6 | 2023-07-25 |
++--------+------+------------+
+4 rows in set (0.00 sec)
+
+
