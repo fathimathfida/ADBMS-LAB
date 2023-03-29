@@ -1,0 +1,91 @@
+1.    List all customer details. 
+
+mysql> select * from CUSTOMER;
++----+-------+---------+---------+---------+
+| id | name  | address | city    | ph_no   |
++----+-------+---------+---------+---------+
+|  2 | siya  | kannur  | Calicut | 2378594 |
+|  3 | nidha | kollam  | kannur  | 2356976 |
+|  4 | diya  | kannur  | Calicut | 2356746 |
+|  5 | naza  | Kochi   | Trissur | 2357987 |
+|  6 | sana  | kannur  | Calicut | 2378965 |
++----+-------+---------+---------+---------+
+5 rows in set (0.00 sec)
+
+
+2.    List pname, price of all products. 
+   
+mysql> select pname,price from PRODUCT;
++-------------------+--------+
+| pname             | price  |
++-------------------+--------+
+| Bag               | 204.00 |
+| Book              | 204.00 |
+| soap              | 102.00 |
+| Laundry detergent |  71.40 |
++-------------------+--------+
+4 rows in set (0.00 sec)
+
+
+3.    List all invoice items, avoid duplicates
+
+mysql> select DISTINCT inv_id from INVOICE_item;
++--------+
+| inv_id |
++--------+
+|     55 |
++--------+
+1 row in set (0.00 sec)
+
+
+4.    List product price between 50rs and 150rs 
+
+mysql> select * from PRODUCT where price between 50 and 150;
++-----+-------------------+--------+
+| pid | pname             | price  |
++-----+-------------------+--------+
+|  33 | soap              | 102.00 |
+|  55 | Laundry detergent |  71.40 |
++-----+-------------------+--------+
+2 rows in set (0.00 sec)
+
+
+5.    List the customer details who lives in ‘ekm’,’tvm’. 
+
+mysql> select * from CUSTOMER  where city="kannur" or city="Calicut";
++----+-------+---------+---------+---------+
+| id | name  | address | city    | ph_no   |
++----+-------+---------+---------+---------+
+|  2 | siya  | kannur  | Calicut | 2378594 |
+|  3 | nidha | kollam  | kannur  | 2356976 |
+|  4 | diya  | kannur  | Calicut | 2356746 |
+|  6 | sana  | kannur  | Calicut | 2378965 |
++----+-------+---------+---------+---------+
+4 rows in set (0.00 sec)
+
+
+6.    List the invoice details from 1st January 2019 to 15th February 2021
+
+mysql> select * from INVOICE_master where inv_date between '2019-01-20' and '2021-03-15';
++--------+------+------------+
+| inv_id | id   | inv_date   |
++--------+------+------------+
+|     44 |    4 | 2019-06-15 |
+|     55 |    5 | 2020-05-20 |
++--------+------+------------+
+2 rows in set (0.00 sec)
+
+
+7.    List the customer details who not live in ‘Kannur’. 
+
+mysql> select * from CUSTOMER where city!="kannur";
++----+------+---------+---------+---------+
+| id | name | address | city    | ph_no   |
++----+------+---------+---------+---------+
+|  2 | siya | kannur  | Calicut | 2378594 |
+|  4 | diya | kannur  | Calicut | 2356746 |
+|  5 | naza | Kochi   | Trissur | 2357987 |
+|  6 | sana | kannur  | Calicut | 2378965 |
++----+------+---------+---------+---------+
+4 rows in set (0.00 sec)
+
