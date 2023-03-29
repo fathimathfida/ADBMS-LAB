@@ -226,8 +226,19 @@ mysql> show Grants;
 
 ``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 
- 2.      REVOKE
+ 2.REVOKE
  
-          ->Remove delete privilege of user 2.
+  ->Remove delete privilege of user 2.
           
 
+mysql> REVOKE DELETE ON INVOICE.* FROM 'USER2'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show Grants;
++----------------------------------------------------+
+| Grants for USER2@localhost                         |
++----------------------------------------------------+
+| GRANT USAGE ON *.* TO 'USER2'@'localhost'          |
+| GRANT UPDATE ON `INVOICE`.* TO 'USER2'@'localhost' |
++----------------------------------------------------+
+2 rows in set (0.00 sec)
