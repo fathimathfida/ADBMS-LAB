@@ -13,7 +13,7 @@ mysql> select * from CUSTOMER;
 5 rows in set (0.00 sec)
 
 
-2.    List pname, price of all products. 
+2.List pname, price of all products. 
    
 mysql> select pname,price from PRODUCT;
 +-------------------+--------+
@@ -38,7 +38,7 @@ mysql> select DISTINCT inv_id from INVOICE_item;
 1 row in set (0.00 sec)
 
 
-4.    List product price between 50rs and 150rs 
+4. List product price between 50rs and 150rs 
 
 mysql> select * from PRODUCT where price between 50 and 150;
 +-----+-------------------+--------+
@@ -50,7 +50,7 @@ mysql> select * from PRODUCT where price between 50 and 150;
 2 rows in set (0.00 sec)
 
 
-5.    List the customer details who lives in ‘ekm’,’tvm’. 
+5. List the customer details who lives in ‘ekm’,’tvm’. 
 
 mysql> select * from CUSTOMER  where city="kannur" or city="Calicut";
 +----+-------+---------+---------+---------+
@@ -64,7 +64,7 @@ mysql> select * from CUSTOMER  where city="kannur" or city="Calicut";
 4 rows in set (0.00 sec)
 
 
-6.    List the invoice details from 1st January 2019 to 15th February 2021
+6. List the invoice details from 1st January 2019 to 15th February 2021
 
 mysql> select * from INVOICE_master where inv_date between '2019-01-20' and '2021-03-15';
 +--------+------+------------+
@@ -76,7 +76,7 @@ mysql> select * from INVOICE_master where inv_date between '2019-01-20' and '202
 2 rows in set (0.00 sec)
 
 
-7.    List the customer details who not live in ‘Kannur’. 
+7. List the customer details who not live in ‘Kannur’. 
 
 mysql> select * from CUSTOMER where city!="kannur";
 +----+------+---------+---------+---------+
@@ -90,7 +90,7 @@ mysql> select * from CUSTOMER where city!="kannur";
 4 rows in set (0.00 sec)
 
 
-8.    List the customers who have no phone number. 
+8. List the customers who have no phone number. 
 
 mysql> SELECT * FROM CUSTOMER;
 +----+-------+-----------+------------+---------+
@@ -116,4 +116,203 @@ mysql> select * from CUSTOMER where ph_no is null;
 1 row in set (0.00 sec)
 
 
-9.    Display customer names in descending order.
+9. Display customer names in descending order.
+
+mysql> SELECT * FROM CUSTOMER;
++----+-------+-----------+------------+---------+
+| id | name  | address   | city       | ph_no   |
++----+-------+-----------+------------+---------+
+|  2 | siya  | kannur    | Calicut    | 2378594 |
+|  3 | nidha | kollam    | kannur     | 2356976 |
+|  4 | diya  | kannur    | Calicut    | 2356746 |
+|  5 | naza  | Kochi     | Trissur    | 2357987 |
+|  6 | sana  | kannur    | Calicut    | 2378965 |
+| 77 | sheza | kannur    | thalassery | 2387899 |
+| 88 | sheza | kannur    | thalassery | 2387899 |
+| 99 | Amaya | kozhikode | vadakara   |    NULL |
++----+-------+-----------+------------+---------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT * FROM CUSTOMER ORDER BY NAME DESC;
++----+-------+-----------+------------+---------+
+| id | name  | address   | city       | ph_no   |
++----+-------+-----------+------------+---------+
+|  2 | siya  | kannur    | Calicut    | 2378594 |
+| 77 | sheza | kannur    | thalassery | 2387899 |
+| 88 | sheza | kannur    | thalassery | 2387899 |
+|  6 | sana  | kannur    | Calicut    | 2378965 |
+|  3 | nidha | kollam    | kannur     | 2356976 |
+|  5 | naza  | Kochi     | Trissur    | 2357987 |
+|  4 | diya  | kannur    | Calicut    | 2356746 |
+| 99 | Amaya | kozhikode | vadakara   |    NULL |
++----+-------+-----------+------------+---------+
+8 rows in set (0.00 sec)
+
+
+10. Display the customer details sorted in ascending by city and descending by names. 
+
+mysql> SELECT * FROM CUSTOMER;
++----+-------+---------+------------+---------+
+| id | name  | address | city       | ph_no   |
++----+-------+---------+------------+---------+
+|  2 | siya  | kannur  | Calicut    | 2378594 |
+|  3 | nidha | kollam  | kannur     | 2356976 |
+|  4 | diya  | kannur  | Calicut    | 2356746 |
+|  5 | naza  | Kochi   | Trissur    | 2357987 |
+|  6 | sana  | kannur  | Calicut    | 2378965 |
+| 77 | sheza | kannur  | thalassery | 2387899 |
+| 88 | sheza | kannur  | thalassery | 2387899 |
++----+-------+---------+------------+---------+
+7 rows in set (0.00 sec)
+
+mysql>  SELECT * FROM CUSTOMER ORDER BY city ASC,name DESC;
++----+-------+---------+------------+---------+
+| id | name  | address | city       | ph_no   |
++----+-------+---------+------------+---------+
+|  2 | siya  | kannur  | Calicut    | 2378594 |
+|  6 | sana  | kannur  | Calicut    | 2378965 |
+|  4 | diya  | kannur  | Calicut    | 2356746 |
+|  3 | nidha | kollam  | kannur     | 2356976 |
+| 77 | sheza | kannur  | thalassery | 2387899 |
+| 88 | sheza | kannur  | thalassery | 2387899 |
+|  5 | naza  | Kochi   | Trissur    | 2357987 |
++----+-------+---------+------------+---------+
+7 rows in set (0.00 sec)
+
+
+11. Find the customer names start with ‘s’. 
+
+mysql> SELECT * FROM CUSTOMER;
++----+-------+---------+------------+---------+
+| id | name  | address | city       | ph_no   |
++----+-------+---------+------------+---------+
+|  2 | siya  | kannur  | Calicut    | 2378594 |
+|  3 | nidha | kollam  | kannur     | 2356976 |
+|  4 | diya  | kannur  | Calicut    | 2356746 |
+|  5 | naza  | Kochi   | Trissur    | 2357987 |
+|  6 | sana  | kannur  | Calicut    | 2378965 |
+| 77 | sheza | kannur  | thalassery | 2387899 |
+| 88 | sheza | kannur  | thalassery | 2387899 |
++----+-------+---------+------------+---------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT name FROM CUSTOMER WHERE name LIKE 's%';
++-------+
+| name  |
++-------+
+| siya  |
+| sana  |
+| sheza |
+| sheza |
++-------+
+4 rows in set (0.00 sec)
+
+12. Find the customer names who have ‘e’ or ‘a’ in them. 
+
+mysql> SELECT * FROM CUSTOMER;
++----+-------+---------+------------+---------+
+| id | name  | address | city       | ph_no   |
++----+-------+---------+------------+---------+
+|  2 | siya  | kannur  | Calicut    | 2378594 |
+|  3 | nidha | kollam  | kannur     | 2356976 |
+|  4 | diya  | kannur  | Calicut    | 2356746 |
+|  5 | naza  | Kochi   | Trissur    | 2357987 |
+|  6 | sana  | kannur  | Calicut    | 2378965 |
+| 77 | sheza | kannur  | thalassery | 2387899 |
+| 88 | sheza | kannur  | thalassery | 2387899 |
++----+-------+---------+------------+---------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT name FROM CUSTOMER WHERE name LIKE '%e%' OR name LIKE'%a%';
++-------+
+| name  |
++-------+
+| siya  |
+| nidha |
+| diya  |
+| naza  |
+| sana  |
+| sheza |
+| sheza |
++-------+
+7 rows in set (0.00 sec)
+
+13. Find the customer names who have at least 3 characters
+
+mysql> SELECT * FROM CUSTOMER;
++----+-------+---------+------------+---------+
+| id | name  | address | city       | ph_no   |
++----+-------+---------+------------+---------+
+|  2 | siya  | kannur  | Calicut    | 2378594 |
+|  3 | nidha | kollam  | kannur     | 2356976 |
+|  4 | diya  | kannur  | Calicut    | 2356746 |
+|  5 | naza  | Kochi   | Trissur    | 2357987 |
+|  6 | sana  | kannur  | Calicut    | 2378965 |
+| 77 | sheza | kannur  | thalassery | 2387899 |
+| 88 | sheza | kannur  | thalassery | 2387899 |
++----+-------+---------+------------+---------+
+7 rows in set (0.00 sec)
+
+mysql>  SELECT name FROM CUSTOMER WHERE name LIKE '_____%';
++-------+
+| name  |
++-------+
+| nidha |
+| sheza |
+| sheza |
++-------+
+3 rows in set (0.00 sec)
+
+14. List the names of customers their names have ‘h’ in second position. 
+
+mysql> SELECT * FROM CUSTOMER;
++----+-------+---------+------------+---------+
+| id | name  | address | city       | ph_no   |
++----+-------+---------+------------+---------+
+|  2 | siya  | kannur  | Calicut    | 2378594 |
+|  3 | nidha | kollam  | kannur     | 2356976 |
+|  4 | diya  | kannur  | Calicut    | 2356746 |
+|  5 | naza  | Kochi   | Trissur    | 2357987 |
+|  6 | sana  | kannur  | Calicut    | 2378965 |
+| 77 | sheza | kannur  | thalassery | 2387899 |
+| 88 | sheza | kannur  | thalassery | 2387899 |
++----+-------+---------+------------+---------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT name FROM CUSTOMER WHERE name LIKE '_h%';
++-------+
+| name  |
++-------+
+| sheza |
+| sheza |
++-------+
+2 rows in set (0.00 sec)
+
+
+15. Find the customer names start with ‘a’ and are at least 3 characters in length.
+
+mysql> SELECT * FROM CUSTOMER;
++----+-------+---------+------------+---------+
+| id | name  | address | city       | ph_no   |
++----+-------+---------+------------+---------+
+|  2 | siya  | kannur  | Calicut    | 2378594 |
+|  3 | nidha | kollam  | kannur     | 2356976 |
+|  4 | diya  | kannur  | Calicut    | 2356746 |
+|  5 | naza  | Kochi   | Trissur    | 2357987 |
+|  6 | sana  | kannur  | Calicut    | 2378965 |
+| 77 | sheza | kannur  | thalassery | 2387899 |
+| 88 | sheza | kannur  | thalassery | 2387899 |
++----+-------+---------+------------+---------+
+7 rows in set (0.00 sec)
+
+mysql>  SELECT name FROM CUSTOMER WHERE name LIKE 's___%';
++-------+
+| name  |
++-------+
+| siya  |
+| sana  |
+| sheza |
+| sheza |
++-------+
+4 rows in set (0.00 sec)
+
