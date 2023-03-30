@@ -1,0 +1,46 @@
+
+1.Listthe customer names of invoice date 3rd February 2023.
+
+mysql> SELECT name FROM CUSTOMER WHERE id IN (SELECT id FROM INVOICE_master WHERE inv_date='2021-03-16');
++------+
+| name |
++------+
+| siya |
++------+
+1 row in set (0.00 sec)
+
+
+2.List the product name and price of each invoice item. 
+
+mysql>  SELECT pname ,price from PRODUCT where pid in(select pid from INVOICE_item);
++-------------------+-------+
+| pname             | price |
++-------------------+-------+
+| Laundry detergent | 71.40 |
++-------------------+-------+
+1 row in set (0.01 sec)
+
+
+3.    List the product names, only include their purchased quantity more than 3. 
+
+mysql> SELECT pname from PRODUCT where pid in(select pid from INVOICE_item WHERE quantity >3);
++-------------------+
+| pname             |
++-------------------+
+| Laundry detergent |
++-------------------+
+1 row in set (0.00 sec)
+
+4.    Find the product that has no sale. 
+mysql> SELECT * from PRODUCT where pid NOT  in(select pid from INVOICE_item);
++-----+-------+--------+
+| pid | pname | price  |
++-----+-------+--------+
+|  11 | Bag   | 204.00 |
+|  22 | Book  | 204.00 |
+|  33 | soap  | 102.00 |
++-----+-------+--------+
+3 rows in set (0.00 sec)
+
+
+5.    List the customer names who purchased the items ‘pen’ and ‘pencil’. 
