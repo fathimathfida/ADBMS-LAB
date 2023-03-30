@@ -89,3 +89,31 @@ mysql> select * from CUSTOMER where city!="kannur";
 +----+------+---------+---------+---------+
 4 rows in set (0.00 sec)
 
+
+8.    List the customers who have no phone number. 
+
+mysql> SELECT * FROM CUSTOMER;
++----+-------+-----------+------------+---------+
+| id | name  | address   | city       | ph_no   |
++----+-------+-----------+------------+---------+
+|  2 | siya  | kannur    | Calicut    | 2378594 |
+|  3 | nidha | kollam    | kannur     | 2356976 |
+|  4 | diya  | kannur    | Calicut    | 2356746 |
+|  5 | naza  | Kochi     | Trissur    | 2357987 |
+|  6 | sana  | kannur    | Calicut    | 2378965 |
+| 77 | sheza | kannur    | thalassery | 2387899 |
+| 88 | sheza | kannur    | thalassery | 2387899 |
+| 99 | Amaya | kozhikode | vadakara   |    NULL |
++----+-------+-----------+------------+---------+
+8 rows in set (0.00 sec)
+
+mysql> select * from CUSTOMER where ph_no is null;
++----+-------+-----------+----------+-------+
+| id | name  | address   | city     | ph_no |
++----+-------+-----------+----------+-------+
+| 99 | Amaya | kozhikode | vadakara |  NULL |
++----+-------+-----------+----------+-------+
+1 row in set (0.00 sec)
+
+
+9.    Display customer names in descending order.
