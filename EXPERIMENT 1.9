@@ -1,0 +1,65 @@
+               EXPERIMENT NO: 1.9	OPTIMIZING DATABASE: (Using Set, arithmetic, logical and special operators)
+
+
+1.Display customer_id, city  who lives either in ‘CLT’ or in ‘KANNUR’
+
+mysql> select * from CUSTOMER;
++----+-------+-----------+------------+---------+
+| id | name  | address   | city       | ph_no   |
++----+-------+-----------+------------+---------+
+|  1 | priya | kozhikode | kannur     | 2378959 |
+|  2 | siya  | kannur    | Calicut    | 2378594 |
+|  3 | nidha | kollam    | kannur     | 2356976 |
+|  4 | diya  | kannur    | Calicut    | 2356746 |
+|  5 | naza  | Kochi     | Trissur    | 2357987 |
+|  6 | sana  | kannur    | Calicut    | 2378965 |
+| 77 | sheza | kannur    | thalassery | 2387899 |
++----+-------+-----------+------------+---------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT ID,CITY FROM CUSTOMER WHERE CITY='calicut' OR CITY='kannur';
++----+---------+
+| ID | CITY    |
++----+---------+
+|  1 | kannur  |
+|  2 | Calicut |
+|  3 | kannur  |
+|  4 | Calicut |
+|  6 | Calicut |
++----+---------+
+5 rows in set (0.00 sec)
+
+
+2. Display product details with an updated price amount(new price= old price+5rs)
+
+mysql> select * from PRODUCT;
++-----+-------------------+--------+
+| pid | pname             | price  |
++-----+-------------------+--------+
+|  11 | Bag               | 204.00 |
+|  22 | Book              | 204.00 |
+|  33 | soap              | 102.00 |
+|  44 | candy             |  90.00 |
+|  55 | Laundry detergent |  71.40 |
+|  66 | chocolate         | 300.00 |
++-----+-------------------+--------+
+6 rows in set (0.00 sec)
+
+mysql> UPDATE PRODUCT SET PRICE=PRICE+5;
+Query OK, 6 rows affected (0.07 sec)
+Rows matched: 6  Changed: 6  Warnings: 0
+
+mysql> select * from PRODUCT;
++-----+-------------------+--------+
+| pid | pname             | price  |
++-----+-------------------+--------+
+|  11 | Bag               | 209.00 |
+|  22 | Book              | 209.00 |
+|  33 | soap              | 107.00 |
+|  44 | candy             |  95.00 |
+|  55 | Laundry detergent |  76.40 |
+|  66 | chocolate         | 305.00 |
++-----+-------------------+--------+
+6 rows in set (0.00 sec)
+
+3.Display customer details who doesn’t have phone number and lives in ‘Calicut’ city (use logical operators)
