@@ -1,0 +1,116 @@
+
+                         EXPERIMENT NO: 1.8 OPTIMIZING DATABASE: (JOINS)
+
+
+mysql> select * from CUSTOMER;
++----+-------+-----------+------------+---------+
+| id | name  | address   | city       | ph_no   |
++----+-------+-----------+------------+---------+
+|  1 | priya | kozhikode | kannur     | 2378959 |
+|  2 | siya  | kannur    | Calicut    | 2378594 |
+|  3 | nidha | kollam    | kannur     | 2356976 |
+|  4 | diya  | kannur    | Calicut    | 2356746 |
+|  5 | naza  | Kochi     | Trissur    | 2357987 |
+|  6 | sana  | kannur    | Calicut    | 2378965 |
+| 77 | sheza | kannur    | thalassery | 2387899 |
+| 88 | sheza | kannur    | thalassery | 2387899 |
++----+-------+-----------+------------+---------+
+8 rows in set (0.00 sec)
+
+mysql> select * from INVOICE_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|     55 |   55 |        5 |
+|     11 |   11 |        3 |
+|     22 |   22 |        1 |
+|     33 |   33 |        1 |
+|     44 |   44 |        4 |
+|     66 |   66 |        6 |
++--------+------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select * from INVOICE_master;
++--------+------+------------+
+| inv_id | id   | inv_date   |
++--------+------+------------+
+|     11 |    1 | 2022-02-11 |
+|     22 |    2 | 2021-03-16 |
+|     33 |    3 | 2019-09-27 |
+|     44 |    4 | 2019-06-15 |
+|     55 |    5 | 2020-05-20 |
+|     66 |    6 | 2023-07-25 |
++--------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from PRODUCT;
++-----+-------------------+--------+
+| pid | pname             | price  |
++-----+-------------------+--------+
+|  11 | Bag               | 204.00 |
+|  22 | Book              | 204.00 |
+|  33 | soap              | 102.00 |
+|  44 | candy             |  90.00 |
+|  55 | Laundry detergent |  71.40 |
+|  66 | chocolate         | 300.00 |
++-----+-------------------+--------+
+6 rows in set (0.00 sec)
+
+1.List the product name and quantity of invoice items. 
+
+mysql> select PRODUCT.PNAME,INVOICE_item.QUANTITY from PRODUCT inner join INVOICE_item on PRODUCT.PID=INVOICE_item.pid;
++-------------------+----------+
+| PNAME             | QUANTITY |
++-------------------+----------+
+| Bag               |        3 |
+| Book              |        1 |
+| soap              |        1 |
+| candy             |        4 |
+| Laundry detergent |        5 |
+| chocolate         |        6 |
++-------------------+----------+
+6 rows in set (0.00 sec)
+
+
+2. Display invoice details of the transaction dated ’31-01-2022
+
+mysql> select CUSTOMER.NAME,PRODUCT.PNAME,PRODUCT.PRICE,INVOICE_master.INV_ID,INVOICE_master.INV_DATE,INVOICE_item.QUANTITY from CUSTOMER inner join INVOICE_master on CUSTOMER.ID=INVOICE_master.ID inner join INVOICE_item on INVOICE_master.INV_ID=INVOICE_item.INV_ID Inner join PRODUCT  on PRODUCT.PID=INVOICE_item.PID where INV_DATE='2020-05-20';
++------+-------------------+-------+--------+------------+----------+
+| NAME | PNAME             | PRICE | INV_ID | INV_DATE   | QUANTITY |
++------+-------------------+-------+--------+------------+----------+
+| naza | Laundry detergent | 71.40 |     55 | 2020-05-20 |        5 |
++------+-------------------+-------+--------+------------+----------+
+1 row in set (0.00 sec)
+
+
+3. Display the customer name, product name, invoice date of purchased item ‘book'.
+
+mysql> select CUSTOMER.NAME,PRODUCT.PNAME,INVOICE_master.INV_DATE from CUSTOMER inner join INVOICE_master on CUSTOMER.ID=INVOICE_master.ID inner join INVOICE_item on INVOICE_master.INV_ID=INVOICE_item.INV_ID inner join PRODUCT on PRODUCT.PID=INVOICE_item.PID where PNAME='Book';
++------+-------+------------+
+| NAME | PNAME | INV_DATE   |
++------+-------+------------+
+| siya | Book  | 2021-03-16 |
++------+-------+------------+
+1 row in set (0.00 sec)
+
+
+
+4. Display all customer details and invoice details must include customer has not purchased items.
+
+mysql> select CUSTOMER.NAME,PRODUCT.PNAME,INVOICE_master.INV_ID,INVOICE_master.INV_DATE from CUSTOMER left join INVOICE_master on CUSTOMER.ID=INVOICE_master.ID left join INVOICE_item on INVOICE_master.INV_ID=INVOICE_item.INV_ID left join PRODUCT on PRODUCT.PID=INVOICE_item.PID;
++-------+-------------------+--------+------------+
+| NAME  | PNAME             | INV_ID | INV_DATE   |
++-------+-------------------+--------+------------+
+| priya | Bag               |     11 | 2022-02-11 |
+| siya  | Book              |     22 | 2021-03-16 |
+| nidha | soap              |     33 | 2019-09-27 |
+| diya  | candy             |     44 | 2019-06-15 |
+| naza  | Laundry detergent |     55 | 2020-05-20 |
+| sana  | chocolate         |     66 | 2023-07-25 |
+| sheza | NULL              |   NULL | NULL       |
+| sheza | NULL              |   NULL | NULL       |
++-------+-------------------+--------+------------+
+8 rows in set (0.00 sec)
+
+
+//
