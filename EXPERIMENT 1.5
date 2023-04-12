@@ -124,7 +124,7 @@ mysql> select pname,price FROM PRODUCT WHERE pid IN(SELECT pid FROM INVOICE_item
 1 row in set (0.00 sec)
 
 
-7. List the names of all customers who have purchased at least 1 products, make sure that no duplicate names in the result.
+7. List the names of all customers who have purchased at least 1 products, make sure that no duplicate names in the result.  //WRONG
 
 mysql>  select name from CUSTOMER where id in(select id from INVOICE_master where inv_id in(select inv_id from INVOICE_item group by inv_id having count(inv_id)>=1));
 +-------+
@@ -140,3 +140,4 @@ mysql>  select name from CUSTOMER where id in(select id from INVOICE_master wher
 6 rows in set (0.00 sec)
 
 //
+//RESUBMIT
