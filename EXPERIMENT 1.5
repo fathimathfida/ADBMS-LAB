@@ -43,4 +43,74 @@ mysql> SELECT * from PRODUCT where pid NOT  in(select pid from INVOICE_item);
 3 rows in set (0.00 sec)
 
 
-5.    List the customer names who purchased the items ‘pen’ and ‘pencil’. 
+5.    List the customer names who purchased the items ‘book’ and ‘soap’. 
+
+mysql> SELECT * FROM CUSTOMER;
++----+-------+-----------+------------+---------+
+| id | name  | address   | city       | ph_no   |
++----+-------+-----------+------------+---------+
+|  1 | priya | kozhikode | kannur     | 2378959 |
+|  2 | siya  | kannur    | Calicut    | 2378594 |
+|  3 | nidha | kollam    | kannur     | 2356976 |
+|  4 | diya  | kannur    | Calicut    | 2356746 |
+|  5 | naza  | Kochi     | Trissur    | 2357987 |
+|  6 | sana  | kannur    | Calicut    | 2378965 |
+| 77 | sheza | kannur    | thalassery | 2387899 |
+| 88 | sheza | kannur    | thalassery | 2387899 |
++----+-------+-----------+------------+---------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT * FROM PRODUCT;
++-----+-------------------+--------+
+| pid | pname             | price  |
++-----+-------------------+--------+
+|  11 | Bag               | 204.00 |
+|  22 | Book              | 204.00 |
+|  33 | soap              | 102.00 |
+|  44 | candy             |  90.00 |
+|  55 | Laundry detergent |  71.40 |
+|  66 | chocolate         | 300.00 |
++-----+-------------------+--------+
+6 rows in set (0.00 sec)
+mysql> SELECT * FROM INVOICE_master;
++--------+------+------------+
+| inv_id | id   | inv_date   |
++--------+------+------------+
+|     11 |    1 | 2022-02-11 |
+|     22 |    2 | 2021-03-16 |
+|     33 |    3 | 2019-09-27 |
+|     44 |    4 | 2019-06-15 |
+|     55 |    5 | 2020-05-20 |
+|     66 |    6 | 2023-07-25 |
++--------+------+------------+
+6 rows in set (0.00 sec)
+
+
+mysql> SELECT * FROM INVOICE_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|     55 |   55 |        5 |
+|     11 |   11 |        3 |
+|     22 |   22 |        1 |
+|     33 |   33 |        1 |
+|     44 |   44 |        4 |
+|     66 |   66 |        6 |
++--------+------+----------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT name FROM CUSTOMER WHERE id IN(SELECT id FROM INVOICE_master WHERE inv_id IN(SELECT inv_id FROM INVOICE_item WHERE pid IN(SELECT pid FROM PRODUCT WHERE pname='Book' OR(SELECT pid FROM PRODUCT WHERE pname='soap'))));  
++-------+
+| name  |
++-------+
+| priya |
+| siya  |
+| nidha |
+| diya  |
+| naza  |
+| sana  |
++-------+
+6 rows in set (0.00 sec)
+
+
+6.Display the purchased product details of the customer ’xyz’. 
