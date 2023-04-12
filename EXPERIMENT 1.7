@@ -1,0 +1,143 @@
+
+
+1.    List product name, price except soap on price order. 
+
+mysql> select * from PRODUCT;
++-----+-------------------+--------+
+| pid | pname             | price  |
++-----+-------------------+--------+
+|  11 | Bag               | 204.00 |
+|  22 | Book              | 204.00 |
+|  33 | soap              | 102.00 |
+|  44 | candy             |  90.00 |
+|  55 | Laundry detergent |  71.40 |
+|  66 | chocolate         | 300.00 |
++-----+-------------------+--------+
+6 rows in set (0.01 sec)
+
+mysql> SELECT PNAME,PRICE FROM PRODUCT WHERE PNAME!='SOAP' ORDER BY PRICE ASC;
++-------------------+--------+
+| PNAME             | PRICE  |
++-------------------+--------+
+| Laundry detergent |  71.40 |
+| candy             |  90.00 |
+| Bag               | 204.00 |
+| Book              | 204.00 |
+| chocolate         | 300.00 |
++-------------------+--------+
+5 rows in set (0.00 sec)
+
+
+2.    Find minimum, maximum and average price of products. 
+
+mysql> select * from PRODUCT;
++-----+-------------------+--------+
+| pid | pname             | price  |
++-----+-------------------+--------+
+|  11 | Bag               | 204.00 |
+|  22 | Book              | 204.00 |
+|  33 | soap              | 102.00 |
+|  44 | candy             |  90.00 |
+|  55 | Laundry detergent |  71.40 |
+|  66 | chocolate         | 300.00 |
++-----+-------------------+--------+
+6 rows in set (0.00 sec)
+
+mysql>  SELECT MIN(PRICE),MAX(PRICE),AVG(PRICE) FROM PRODUCT;
++------------+------------+------------+
+| MIN(PRICE) | MAX(PRICE) | AVG(PRICE) |
++------------+------------+------------+
+|      71.40 |     300.00 | 161.900000 |
++------------+------------+------------+
+1 row in set (0.03 sec)
+
+
+3.     Find number of customers in each city. 
+
+mysql> select * from CUSTOMER;
++----+-------+-----------+------------+---------+
+| id | name  | address   | city       | ph_no   |
++----+-------+-----------+------------+---------+
+|  1 | priya | kozhikode | kannur     | 2378959 |
+|  2 | siya  | kannur    | Calicut    | 2378594 |
+|  3 | nidha | kollam    | kannur     | 2356976 |
+|  4 | diya  | kannur    | Calicut    | 2356746 |
+|  5 | naza  | Kochi     | Trissur    | 2357987 |
+|  6 | sana  | kannur    | Calicut    | 2378965 |
+| 77 | sheza | kannur    | thalassery | 2387899 |
+| 88 | sheza | kannur    | thalassery | 2387899 |
++----+-------+-----------+------------+---------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(*),CITY FROM CUSTOMER GROUP BY CITY;
++----------+------------+
+| COUNT(*) | CITY       |
++----------+------------+
+|        3 | Calicut    |
+|        2 | kannur     |
+|        2 | thalassery |
+|        1 | Trissur    |
++----------+------------+
+4 rows in set (0.00 sec)
+
+
+4.    Find number of customers in each city, only include city with more than 3 customers.
+
+mysql> select * from CUSTOMER;
++----+-------+-----------+------------+---------+
+| id | name  | address   | city       | ph_no   |
++----+-------+-----------+------------+---------+
+|  1 | priya | kozhikode | kannur     | 2378959 |
+|  2 | siya  | kannur    | Calicut    | 2378594 |
+|  3 | nidha | kollam    | kannur     | 2356976 |
+|  4 | diya  | kannur    | Calicut    | 2356746 |
+|  5 | naza  | Kochi     | Trissur    | 2357987 |
+|  6 | sana  | kannur    | Calicut    | 2378965 |
+| 77 | sheza | kannur    | thalassery | 2387899 |
+| 88 | sheza | kannur    | thalassery | 2387899 |
++----+-------+-----------+------------+---------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(*), CITY FROM CUSTOMER GROUP BY CITY HAVING COUNT(*)>1;
++----------+------------+
+| COUNT(*) | CITY       |
++----------+------------+
+|        3 | Calicut    |
+|        2 | kannur     |
+|        2 | thalassery |
++----------+------------+
+3 rows in set (0.00 sec)
+
+
+5.    Show data as displayed ‘who, where’ Eg: ‘customer1 lives in ekm’.
+
+mysql> select * from CUSTOMER;
++----+-------+-----------+------------+---------+
+| id | name  | address   | city       | ph_no   |
++----+-------+-----------+------------+---------+
+|  1 | priya | kozhikode | kannur     | 2378959 |
+|  2 | siya  | kannur    | Calicut    | 2378594 |
+|  3 | nidha | kollam    | kannur     | 2356976 |
+|  4 | diya  | kannur    | Calicut    | 2356746 |
+|  5 | naza  | Kochi     | Trissur    | 2357987 |
+|  6 | sana  | kannur    | Calicut    | 2378965 |
+| 77 | sheza | kannur    | thalassery | 2387899 |
+| 88 | sheza | kannur    | thalassery | 2387899 |
++----+-------+-----------+------------+---------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT CONCAT(NAME," LIVES IN ",CITY)AS CUST_INFO FROM CUSTOMER;
++---------------------------+
+| CUST_INFO                 |
++---------------------------+
+| priya LIVES IN kannur     |
+| siya LIVES IN Calicut     |
+| nidha LIVES IN kannur     |
+| diya LIVES IN Calicut     |
+| naza LIVES IN Trissur     |
+| sana LIVES IN Calicut     |
+| sheza LIVES IN thalassery |
+| sheza LIVES IN thalassery |
++---------------------------+
+8 rows in set (0.00 sec)
+
