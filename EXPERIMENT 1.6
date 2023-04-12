@@ -1,0 +1,54 @@
+1. Create a view for customers who have purchased products. 
+
+mysql> CREATE VIEW CUST_VIEW AS SELECT name FROM CUSTOMER WHERE id IN(SELECT id FROM INVOICE_master);
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> SELECT * FROM CUSTOMER;
++----+-------+-----------+------------+---------+
+| id | name  | address   | city       | ph_no   |
++----+-------+-----------+------------+---------+
+|  1 | priya | kozhikode | kannur     | 2378959 |
+|  2 | siya  | kannur    | Calicut    | 2378594 |
+|  3 | nidha | kollam    | kannur     | 2356976 |
+|  4 | diya  | kannur    | Calicut    | 2356746 |
+|  5 | naza  | Kochi     | Trissur    | 2357987 |
+|  6 | sana  | kannur    | Calicut    | 2378965 |
+| 77 | sheza | kannur    | thalassery | 2387899 |
+| 88 | sheza | kannur    | thalassery | 2387899 |
++----+-------+-----------+------------+---------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT * FROM CUST_VIEW;
++-------+
+| name  |
++-------+
+| priya |
+| siya  |
+| nidha |
+| diya  |
+| naza  |
+| sana  |
++-------+
+6 rows in set (0.00 sec)
+
+mysql> 
+
+2. Create a view for invoice products[cust_name, , inv_id, product_id, quantity]
+
+mysql>  create view INVOICE_Product as select CUSTOMER.name,INVOICE_master.inv_id,PRODUCT.pid,INVOICE_item.QUANTITY from CUSTOMER INNER JOIN INVOICE_master on CUSTOMER.id=INVOICE_master.id INNER JOIN INVOICE_item on INVOICE_master.inv_id=INVOICE_item.inv_id INNER JOIN PRODUCT on PRODUCT.pid=INVOICE_item.pid;
+Query OK, 0 rows affected (0.10 sec)
+mysql> SELECT * FROM INVOICE_Product;
++-------+--------+-----+----------+
+| name  | inv_id | pid | QUANTITY |
++-------+--------+-----+----------+
+| priya |     11 |  11 |        3 |
+| siya  |     22 |  22 |        1 |
+| nidha |     33 |  33 |        1 |
+| diya  |     44 |  44 |        4 |
+| naza  |     55 |  55 |        5 |
+| sana  |     66 |  66 |        6 |
++-------+--------+-----+----------+
+6 rows in set (0.00 sec)
+
+
+//completed
