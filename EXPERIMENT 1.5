@@ -113,4 +113,16 @@ mysql> SELECT name FROM CUSTOMER WHERE id IN(SELECT id FROM INVOICE_master WHERE
 6 rows in set (0.00 sec)
 
 
-6.Display the purchased product details of the customer ’xyz’. 
+6.Display the purchased product details of the customer 'diya’. 
+
+mysql> select pname,price FROM PRODUCT WHERE pid IN(SELECT pid FROM INVOICE_item WHERE inv_id IN (SELECT inv_id FROM INVOICE_master WHERE id IN (SELECT id FROM CUSTOMER WHERE name='diya')));
++-------+-------+
+| pname | price |
++-------+-------+
+| candy | 90.00 |
++-------+-------+
+1 row in set (0.00 sec)
+
+
+7.    List the names of all customers who have purchased at least 2 products, make sure that no duplicate names in the result.
+
