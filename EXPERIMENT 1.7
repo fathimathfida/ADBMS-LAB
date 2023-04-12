@@ -1,6 +1,6 @@
 
 
-1.    List product name, price except soap on price order. 
+1. List product name, price except soap on price order. 
 
 mysql> select * from PRODUCT;
 +-----+-------------------+--------+
@@ -28,7 +28,7 @@ mysql> SELECT PNAME,PRICE FROM PRODUCT WHERE PNAME!='SOAP' ORDER BY PRICE ASC;
 5 rows in set (0.00 sec)
 
 
-2.    Find minimum, maximum and average price of products. 
+2.Find minimum, maximum and average price of products. 
 
 mysql> select * from PRODUCT;
 +-----+-------------------+--------+
@@ -52,7 +52,8 @@ mysql>  SELECT MIN(PRICE),MAX(PRICE),AVG(PRICE) FROM PRODUCT;
 1 row in set (0.03 sec)
 
 
-3.     Find number of customers in each city. 
+
+3.Find number of customers in each city. 
 
 mysql> select * from CUSTOMER;
 +----+-------+-----------+------------+---------+
@@ -81,7 +82,8 @@ mysql> SELECT COUNT(*),CITY FROM CUSTOMER GROUP BY CITY;
 4 rows in set (0.00 sec)
 
 
-4.    Find number of customers in each city, only include city with more than 3 customers.
+
+4.Find number of customers in each city, only include city with more than 3 customers.
 
 mysql> select * from CUSTOMER;
 +----+-------+-----------+------------+---------+
@@ -109,7 +111,8 @@ mysql> SELECT COUNT(*), CITY FROM CUSTOMER GROUP BY CITY HAVING COUNT(*)>1;
 3 rows in set (0.00 sec)
 
 
-5.    Show data as displayed ‘who, where’ Eg: ‘customer1 lives in ekm’.
+
+5.Show data as displayed ‘who, where’ Eg: ‘customer1 lives in ekm’.
 
 mysql> select * from CUSTOMER;
 +----+-------+-----------+------------+---------+
@@ -141,3 +144,4 @@ mysql> SELECT CONCAT(NAME," LIVES IN ",CITY)AS CUST_INFO FROM CUSTOMER;
 +---------------------------+
 8 rows in set (0.00 sec)
 
+//
