@@ -63,3 +63,68 @@ mysql> select * from PRODUCT;
 6 rows in set (0.00 sec)
 
 3.Display customer details who doesn’t have phone number and lives in ‘Calicut’ city (use logical operators)
+
+mysql> SELECT *FROM CUSTOMER;
++----+-------+-----------+------------+---------+
+| id | name  | address   | city       | ph_no   |
++----+-------+-----------+------------+---------+
+|  1 | priya | kozhikode | kannur     | 2378959 |
+|  2 | siya  | kannur    | Calicut    | 2378594 |
+|  3 | nidha | kollam    | kannur     | 2356976 |
+|  4 | diya  | kannur    | Calicut    | 2356746 |
+|  5 | naza  | Kochi     | Trissur    | 2357987 |
+|  6 | sana  | kannur    | Calicut    | 2378965 |
+| 77 | sheza | kannur    | thalassery | 2387899 |
+| 88 | hana  | kalathode | calicut    |    NULL |
+| 99 | dhana | vadakara  | calicut    |    NULL |
++----+-------+-----------+------------+---------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT *FROM CUSTOMER where ph_no is null and city="calicut";
++----+-------+-----------+---------+-------+
+| id | name  | address   | city    | ph_no |
++----+-------+-----------+---------+-------+
+| 88 | hana  | kalathode | calicut |  NULL |
+| 99 | dhana | vadakara  | calicut |  NULL |
++----+-------+-----------+---------+-------+
+2 rows in set (0.01 sec)
+
+
+4.      List the product names if it finds any records in the invoice items table has quantity =3 (use special operators)
+
+mysql> SELECT *FROM PRODUCT;
++-----+-------------------+--------+
+| pid | pname             | price  |
++-----+-------------------+--------+
+|  11 | Bag               | 209.00 |
+|  22 | Book              | 209.00 |
+|  33 | soap              | 107.00 |
+|  44 | candy             |  95.00 |
+|  55 | Laundry detergent |  76.40 |
+|  66 | chocolate         | 305.00 |
++-----+-------------------+--------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT *FROM INVOICE_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|     55 |   55 |        5 |
+|     11 |   11 |        3 |
+|     22 |   22 |        1 |
+|     33 |   33 |        1 |
+|     44 |   44 |        4 |
+|     66 |   66 |        6 |
++--------+------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select pname from PRODUCT WHERE pid in(select pid from INVOICE_item where quantity=4);
++-------+
+| pname |
++-------+
+| candy |
++-------+
+1 row in set (0.00 sec)
+
+
+
