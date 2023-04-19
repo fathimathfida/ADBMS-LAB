@@ -85,7 +85,8 @@ mysql> SELECT COUNT(*),CITY FROM CUSTOMER GROUP BY CITY;
 
 4.Find number of customers in each city, only include city with more than 3 customers.
 
-mysql> select * from CUSTOMER;
+
+mysql> SELECT *FROM CUSTOMER;
 +----+-------+-----------+------------+---------+
 | id | name  | address   | city       | ph_no   |
 +----+-------+-----------+------------+---------+
@@ -96,20 +97,19 @@ mysql> select * from CUSTOMER;
 |  5 | naza  | Kochi     | Trissur    | 2357987 |
 |  6 | sana  | kannur    | Calicut    | 2378965 |
 | 77 | sheza | kannur    | thalassery | 2387899 |
-| 88 | sheza | kannur    | thalassery | 2387899 |
+| 88 | hana  | kalathode | calicut    |    NULL |
+| 99 | dhana | vadakara  | calicut    |    NULL |
 +----+-------+-----------+------------+---------+
-8 rows in set (0.00 sec)
+9 rows in set (0.00 sec)
 
-mysql> SELECT COUNT(*), CITY FROM CUSTOMER GROUP BY CITY HAVING COUNT(*)>1; //WRONG QUERY
-+----------+------------+
-| COUNT(*) | CITY       |
-+----------+------------+
-|        3 | Calicut    |
-|        2 | kannur     |
-|        2 | thalassery |
-+----------+------------+
-3 rows in set (0.00 sec)
 
+mysql> SELECT COUNT(*), CITY FROM CUSTOMER GROUP BY CITY HAVING COUNT(*)>3;
++----------+---------+
+| COUNT(*) | CITY    |
++----------+---------+
+|        5 | Calicut |
++----------+---------+
+1 row in set (0.00 sec)
 
 
 5.Show data as displayed ‘who, where’ Eg: ‘customer1 lives in ekm’.
@@ -144,4 +144,4 @@ mysql> SELECT CONCAT(NAME," LIVES IN ",CITY)AS CUST_INFO FROM CUSTOMER;
 +---------------------------+
 8 rows in set (0.00 sec)
 
-//RESUBMIT
+
