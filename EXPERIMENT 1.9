@@ -118,7 +118,7 @@ mysql> SELECT *FROM INVOICE_item;
 +--------+------+----------+
 6 rows in set (0.00 sec)
 
-mysql> select pname from PRODUCT WHERE pid in(select pid from INVOICE_item where quantity=4);
+mysql> select pname from PRODUCT WHERE pid in(select pid from INVOICE_item where quantity=4);  //WRONG QUERY
 +-------+
 | pname |
 +-------+
@@ -128,3 +128,4 @@ mysql> select pname from PRODUCT WHERE pid in(select pid from INVOICE_item where
 
 
 
+//RESUBMIT
