@@ -1,0 +1,160 @@
+              EXPERIMENT NO: 2.1- PL/SQL PROGRAMS- STORED PROCEDURES
+               --------------------------------------------------------------
+
+1.Create a procedure to display all tables in the invoice database.
+
+
+  mysql> delimiter !!
+mysql> create procedure invoice_tables() 
+    -> begin 
+    -> select * from CUSTOMER; 
+    -> select * from PRODUCT;
+    -> select * from INVOICE_master;
+    -> select * from INVOICE_item;
+    -> end !!
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call invoice_tables(); !!
++----+-------+-----------+------------+---------+
+| id | name  | address   | city       | ph_no   |
++----+-------+-----------+------------+---------+
+|  1 | priya | kozhikode | kannur     | 2378959 |
+|  2 | siya  | kannur    | Calicut    | 2378594 |
+|  3 | nidha | kollam    | kannur     | 2356976 |
+|  4 | diya  | kannur    | Calicut    | 2356746 |
+|  5 | naza  | Kochi     | Trissur    | 2357987 |
+|  6 | sana  | kannur    | Calicut    | 2378965 |
+| 77 | sheza | kannur    | thalassery | 2387899 |
+| 88 | hana  | kalathode | calicut    |    NULL |
+| 99 | dhana | vadakara  | calicut    |    NULL |
++----+-------+-----------+------------+---------+
+9 rows in set (0.00 sec)
+
++-----+-------------------+--------+
+| pid | pname             | price  |
++-----+-------------------+--------+
+|  11 | Bag               | 209.00 |
+|  22 | Book              | 209.00 |
+|  33 | soap              | 107.00 |
+|  44 | candy             |  95.00 |
+|  55 | Laundry detergent |  76.40 |
+|  66 | chocolate         | 305.00 |
++-----+-------------------+--------+
+6 rows in set (0.00 sec)
+
++--------+------+------------+
+| inv_id | id   | inv_date   |
++--------+------+------------+
+|     11 |    1 | 2022-02-11 |
+|     22 |    2 | 2021-03-16 |
+|     33 |    3 | 2019-09-27 |
+|     44 |    4 | 2019-06-15 |
+|     55 |    5 | 2020-05-20 |
+|     66 |    6 | 2023-07-25 |
++--------+------+------------+
+6 rows in set (0.00 sec)
+
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|     55 |   55 |        5 |
+|     11 |   11 |        3 |
+|     22 |   22 |        1 |
+|     33 |   33 |        1 |
+|     44 |   44 |        4 |
+|     66 |   66 |        6 |
++--------+------+----------+
+6 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00)
+------------------------------------------------------------------------------------------------------------------------------------
+
+2.Create a procedure to find greatest of 3 numbers.
+
+mysql> delimiter !!
+mysql> create procedure greatestnumber()                                            -> begin
+    -> declare a,b,c int;
+    -> set a=2;
+    -> set b=4;
+    -> set c=1;
+    -> if a>b and a>c then
+    -> select a as 'greatestnumber';  
+    -> else if b>a and b>c then  
+    -> select b as 'greatestnumber';
+    -> else
+    -> select c as 'greatestnumber';
+    -> end if;
+    -> end if;
+    -> end !!
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call greatestnumber(); !!
+
++----------------+
+| greatestnumber |
++----------------+
+|              4 |
++----------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+
+3. Create a procedure to display invoice details of a particular customer.
+
+mysql> select * from CUSTOMER;
++----+-------+-----------+------------+---------+
+| id | name  | address   | city       | ph_no   |
++----+-------+-----------+------------+---------+
+|  1 | priya | kozhikode | kannur     | 2378959 |
+|  2 | siya  | kannur    | Calicut    | 2378594 |
+|  3 | nidha | kollam    | kannur     | 2356976 |
+|  4 | diya  | kannur    | Calicut    | 2356746 |
+|  5 | naza  | Kochi     | Trissur    | 2357987 |
+|  6 | sana  | kannur    | Calicut    | 2378965 |
+| 77 | sheza | kannur    | thalassery | 2387899 |
+| 88 | hana  | kalathode | calicut    |    NULL |
+| 99 | dhana | vadakara  | calicut    |    NULL |
++----+-------+-----------+------------+---------+
+9 rows in set (0.00 sec)
+
+mysql> select * from INVOICE_master;
++--------+------+------------+
+| inv_id | id   | inv_date   |
++--------+------+------------+
+|     11 |    1 | 2022-02-11 |
+|     22 |    2 | 2021-03-16 |
+|     33 |    3 | 2019-09-27 |
+|     44 |    4 | 2019-06-15 |
+|     55 |    5 | 2020-05-20 |
+|     66 |    6 | 2023-07-25 |
++--------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from INVOICE_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|     55 |   55 |        5 |
+|     11 |   11 |        3 |
+|     22 |   22 |        1 |
+|     33 |   33 |        1 |
+|     44 |   44 |        4 |
+|     66 |   66 |        6 |
++--------+------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select * from PRODUCT;
++-----+-------------------+--------+
+| pid | pname             | price  |
++-----+-------------------+--------+
+|  11 | Bag               | 209.00 |
+|  22 | Book              | 209.00 |
+|  33 | soap              | 107.00 |
+|  44 | candy             |  95.00 |
+|  55 | Laundry detergent |  76.40 |
+|  66 | chocolate         | 305.00 |
++-----+-------------------+--------+
+6 rows in set (0.00 sec)
+
+
