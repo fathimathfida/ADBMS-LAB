@@ -90,7 +90,7 @@ mysql> SELECT *FROM CUSTOMER where ph_no is null and city="calicut";
 2 rows in set (0.01 sec)
 
 
-4.      List the product names if it finds any records in the invoice items table has quantity =3 (use special operators)
+4.      List the product names if it finds any records in the invoice items table has quantity =4 (use special operators)
 
 mysql> SELECT *FROM PRODUCT;
 +-----+-------------------+--------+
@@ -118,7 +118,7 @@ mysql> SELECT *FROM INVOICE_item;
 +--------+------+----------+
 6 rows in set (0.00 sec)
 
-mysql> select pname from PRODUCT WHERE pid in(select pid from INVOICE_item where quantity=4);  //WRONG QUERY
+mysql> select pname from PRODUCT WHERE pid in(select pid from INVOICE_item where quantity=4);  
 +-------+
 | pname |
 +-------+
