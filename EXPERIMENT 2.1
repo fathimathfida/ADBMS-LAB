@@ -67,7 +67,7 @@ mysql> call invoice_tables(); !!
 6 rows in set (0.00 sec)
 
 Query OK, 0 rows affected (0.00)
-------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 2.Create a procedure to find greatest of 3 numbers.
 
@@ -99,7 +99,7 @@ mysql> call greatestnumber(); !!
 
 Query OK, 0 rows affected (0.00 sec)
 
-
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 3. Create a procedure to display invoice details of a particular customer.
 
 mysql> select * from CUSTOMER;
@@ -158,3 +158,18 @@ mysql> select * from PRODUCT;
 6 rows in set (0.00 sec)
 
 
+mysql> delimiter !!
+mysql> create procedure invoice_dtails() 
+    -> begin                                                                                                                                        -> select CUSTOMER.id,CUSTOMER.name,PRODUCT.pname,INVOICE_item.quantity from CUSTOMER natural join PRODUCT natural join INVOICE_item natural join INVOICE_master where CUSTOMER.name='priya';  
+    -> end !!
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call invoice_details(); !!
++----+-------+-------+----------+
+| id | name  | pname | quantity |
++----+-------+-------+----------+
+|  1 | priya | Bag   |        3 |
++----+-------+-------+----------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
