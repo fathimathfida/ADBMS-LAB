@@ -1,0 +1,51 @@
+                                                  EXPERIMENT NO: 2.2	
+                                      
+                                             PL/SQL PROGRAMS – FUNCTIONS
+                                             
+ 1. Create a function to calculate price_range(low, medium, high) of each product. If price<=5 indicate as low, upto 50 indicate as medium, and above as high                                              
+                            
+mysql> select * from PRODUCT;
++-----+-------------------+--------+
+| pid | pname             | price  |
++-----+-------------------+--------+
+|  11 | Bag               | 209.00 |
+|  22 | Book              | 209.00 |
+|  33 | soap              | 107.00 |
+|  44 | candy             |  95.00 |
+|  55 | Laundry detergent |  76.40 |
+|  66 | chocolate         | 305.00 |
++-----+-------------------+--------+
+6 rows in set (0.00 sec)
+                            
+ mysql> delimiter $$
+mysql> create function price_range(price int)
+    -> returns varchar(20)
+    -> deterministic
+    -> begin
+    -> declare price_range varchar(20);
+    -> if(price <=5)then
+    -> set price_range='low';
+    -> else if (price > 5) and (price <=50)then
+    -> set price_range='medium';
+    -> else
+    -> set price_range='high';
+    -> end if;
+    -> end if;
+    -> return(price_range);
+    -> end $$
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select pname,price,price_range(price) from PRODUCT order by price;
++-------------------+--------+--------------------+
+| pname             | price  | price_range(price) |
++-------------------+--------+--------------------+
+| Laundry detergent |  76.40 | high               |
+| candy             |  95.00 | high               |
+| soap              | 107.00 | high               |
+| Bag               | 209.00 | high               |
+| Book              | 209.00 | high               |
+| chocolate         | 305.00 | high               |
++-------------------+--------+--------------------+
+6 rows in set (0.00 sec)
+
+
