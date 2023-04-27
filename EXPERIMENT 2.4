@@ -1,0 +1,59 @@
+                                                          EXPERIMENT NO: 2.4	
+                                                      -PL/SQL PROGRAMS – CURSOR
+                                                      
+                                                      
+1.Write a PL/SQL program to create a name list of customers using CURSOR
+
+mysql> select * from CUSTOMER;
++----+---------+-----------+------------+---------+
+| id | name    | address   | city       | ph_no   |
++----+---------+-----------+------------+---------+
+|  1 | priya   | kozhikode | kannur     | 2378959 |
+|  2 | siya    | kannur    | Calicut    | 2378594 |
+|  3 | nidha   | kollam    | kannur     | 2356976 |
+|  4 | fadhiya | kannur    | Calicut    | 2356746 |
+|  5 | naza    | Kochi     | Trissur    | 2357987 |
+|  6 | sana    | kannur    | Calicut    | 2378965 |
+| 77 | sheza   | kannur    | thalassery | 2387899 |
+| 88 | hana    | kalathode | calicut    |    NULL |
+| 99 | dhana   | vadakara  | calicut    |    NULL |
++----+---------+-----------+------------+---------+
+9 rows in set (0.00 sec)
+
+mysql> delimiter $$
+mysql> create procedure list_name(inout name_list varchar(4000))
+    -> begin
+    -> declare is_done integer default 0;
+    -> declare c_name varchar(100) default "";
+    -> declare cust_cursor cursor for
+    -> select name from CUSTOMER;
+    -> declare continue handler for not found set is_done = 1;
+    -> open cust_cursor;
+    -> get_list:loop
+    -> fetch cust_cursor into c_name;
+    -> if is_done = 1 then
+    -> leave get_list;
+    -> end if;
+    -> set name_list = concat(c_name, ";",name_list);
+    -> end loop get_list;
+    -> close cust_cursor;
+    -> end $$
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> delimiter ;
+mysql> set @name_list =" ";
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call list_name(@name_list);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @name_list;
++-------------------------------------------------------+
+| @name_list                                            |
++-------------------------------------------------------+
+| dhana;hana;sheza;sana;naza;fadhiya;nidha;siya;priya;  |
++-------------------------------------------------------+
+1 row in set (0.00 sec)
+
+-------------------------------------------------------
+//completed
