@@ -1,5 +1,5 @@
-              EXPERIMENT NO: 2.1- PL/SQL PROGRAMS- STORED PROCEDURES
-               --------------------------------------------------------------
+                                                 EXPERIMENT NO: 2.1- PL/SQL PROGRAMS- STORED PROCEDURES
+               ------------------------------------------------------------------------------------------------------------------
 
 1.Create a procedure to display all tables in the invoice database.
 
@@ -72,7 +72,8 @@ Query OK, 0 rows affected (0.00)
 2.Create a procedure to find greatest of 3 numbers.
 
 mysql> delimiter !!
-mysql> create procedure greatestnumber()                                            -> begin
+mysql> create procedure greatestnumber()
+    -> begin
     -> declare a,b,c int;
     -> set a=2;
     -> set b=4;
@@ -160,7 +161,8 @@ mysql> select * from PRODUCT;
 
 mysql> delimiter !!
 mysql> create procedure invoice_dtails() 
-    -> begin                                                                                                                                        -> select CUSTOMER.id,CUSTOMER.name,PRODUCT.pname,INVOICE_item.quantity from CUSTOMER natural join PRODUCT natural join INVOICE_item natural join INVOICE_master where CUSTOMER.name='priya';  
+    -> begin 
+    -> select CUSTOMER.id,CUSTOMER.name,PRODUCT.pname,INVOICE_item.quantity from CUSTOMER natural join PRODUCT natural join INVOICE_item natural join INVOICE_master where CUSTOMER.name='priya';  
     -> end !!
 Query OK, 0 rows affected (0.00 sec)
 
@@ -173,3 +175,5 @@ mysql> call invoice_details(); !!
 1 row in set (0.00 sec)
 
 Query OK, 0 rows affected (0.00 sec)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+//COMPLETED
