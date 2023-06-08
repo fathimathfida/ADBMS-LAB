@@ -1,0 +1,92 @@
+                                    Assignment 3: NoSQL-CRUD
+                      ----------------------------------------------------------------
+
+1.      Write a MongoDB query to create an INVOICE database and collections (CUSTOMER, PRODUCT) and its corresponding documents.
+
+> use invoice
+switched to db invoice
+
+> db.createCollection("customer")
+{ "ok" : 1 }
+>  db.createCollection("product")
+{ "ok" : 1 }
+> show dbs
+admin    0.000GB
+config   0.000GB
+invoice  0.000GB
+local    0.000GB
+test     0.000GB
+> show collections
+customer
+product
+> db.customer.insertMany([
+... {name:"Siya",age:18,city:"calicut",phn_no:8111111111},
+... {name:"Nidha",age:19,city:"tvm",phn_no:9222222222},
+... {name:"Niya",age:20,city:"malappuram",phn_no:733333333},
+... {name:"Naza",age:21,city:"calicut",phn_no:64444444444},
+... {name:"Hasna",age:22,city:"kannur",phn_no:81555555555},
+... ])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("64817fdf9a68dde2b13dd613"),
+		ObjectId("64817fdf9a68dde2b13dd614"),
+		ObjectId("64817fdf9a68dde2b13dd615"),
+		ObjectId("64817fdf9a68dde2b13dd616"),
+		ObjectId("64817fdf9a68dde2b13dd617")
+	]
+}
+>  db.product.insertMany([
+...  {pname:"notebook",price:"45"},
+...  {pname:"record",price:"70"},
+...  {pname:"pencil",price:"10"},
+...  {pname:"pen",price:"10"},
+...  {pname:"bag",price:"500"}
+... ])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("648181059a68dde2b13dd618"),
+		ObjectId("648181059a68dde2b13dd619"),
+		ObjectId("648181059a68dde2b13dd61a"),
+		ObjectId("648181059a68dde2b13dd61b"),
+		ObjectId("648181059a68dde2b13dd61c")
+	]
+------------------------------------------------------------------------------------------------------------------------------------------
+2.      Write a MongoDB query to find all documents from the collection CUSTOMER 
+
+
+>  db.customer.find()
+{ "_id" : ObjectId("64817fdf9a68dde2b13dd613"), "name" : "Siya", "age" : 18, "city" : "calicut", "phn_no" : 8111111111 }
+{ "_id" : ObjectId("64817fdf9a68dde2b13dd614"), "name" : "Nidha", "age" : 19, "city" : "tvm", "phn_no" : 9222222222 }
+{ "_id" : ObjectId("64817fdf9a68dde2b13dd615"), "name" : "Niya", "age" : 20, "city" : "malappuram", "phn_no" : 733333333 }
+{ "_id" : ObjectId("64817fdf9a68dde2b13dd616"), "name" : "Naza", "age" : 21, "city" : "calicut", "phn_no" : 64444444444 }
+{ "_id" : ObjectId("64817fdf9a68dde2b13dd617"), "name" : "Hasna", "age" : 22, "city" : "kannur", "phn_no" : 81555555555 }
+> 
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+3.      Write a MongoDB query to update the city in the collection CUSTOMER.
+
+> db.customer.update({'name':'Siya'},{$set:{'city':'ekm'}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+>  db.customer.find()
+{ "_id" : ObjectId("64817fdf9a68dde2b13dd613"), "name" : "Siya", "age" : 18, "city" : "ekm", "phn_no" : 8111111111 }
+{ "_id" : ObjectId("64817fdf9a68dde2b13dd614"), "name" : "Nidha", "age" : 19, "city" : "tvm", "phn_no" : 9222222222 }
+{ "_id" : ObjectId("64817fdf9a68dde2b13dd615"), "name" : "Niya", "age" : 20, "city" : "malappuram", "phn_no" : 733333333 }
+{ "_id" : ObjectId("64817fdf9a68dde2b13dd616"), "name" : "Naza", "age" : 21, "city" : "calicut", "phn_no" : 64444444444 }
+{ "_id" : ObjectId("64817fdf9a68dde2b13dd617"), "name" : "Hasna", "age" : 22, "city" : "kannur", "phn_no" : 81555555555 }
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+4.      Write a MongoDB query to delete the first matched document whose city is “Calicut”.
+
+>  db.customer.deleteOne({city:'malappuram'})
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.customer.find()
+{ "_id" : ObjectId("64817fdf9a68dde2b13dd613"), "name" : "Siya", "age" : 18, "city" : "ekm", "phn_no" : 8111111111 }
+{ "_id" : ObjectId("64817fdf9a68dde2b13dd614"), "name" : "Nidha", "age" : 19, "city" : "tvm", "phn_no" : 9222222222 }
+{ "_id" : ObjectId("64817fdf9a68dde2b13dd616"), "name" : "Naza", "age" : 21, "city" : "calicut", "phn_no" : 64444444444 }
+{ "_id" : ObjectId("64817fdf9a68dde2b13dd617"), "name" : "Hasna", "age" : 22, "city" : "kannur", "phn_no" : 81555555555 }/
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
