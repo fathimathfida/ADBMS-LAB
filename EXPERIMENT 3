@@ -78,7 +78,7 @@ WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
-4.      Write a MongoDB query to delete the first matched document whose city is “Calicut”.
+4.      Write a MongoDB query to delete the first matched document whose city is “malappuram”.
 
 >  db.customer.deleteOne({city:'malappuram'})
 { "acknowledged" : true, "deletedCount" : 1 }
