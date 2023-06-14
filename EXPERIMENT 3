@@ -86,7 +86,6 @@ WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 { "_id" : ObjectId("64817fdf9a68dde2b13dd613"), "name" : "Siya", "age" : 18, "city" : "ekm", "phn_no" : 8111111111 }
 { "_id" : ObjectId("64817fdf9a68dde2b13dd614"), "name" : "Nidha", "age" : 19, "city" : "tvm", "phn_no" : 9222222222 }
 { "_id" : ObjectId("64817fdf9a68dde2b13dd616"), "name" : "Naza", "age" : 21, "city" : "calicut", "phn_no" : 64444444444 }
-{ "_id" : ObjectId("64817fdf9a68dde2b13dd617"), "name" : "Hasna", "age" : 22, "city" : "kannur", "phn_no" : 81555555555 }/
+{ "_id" : ObjectId("64817fdf9a68dde2b13dd617"), "name" : "Hasna", "age" : 22, "city" : "kannur", "phn_no" : 81555555555 }
 ----------------------------------------------------------------------------------------------------------------------------------------
-
 
