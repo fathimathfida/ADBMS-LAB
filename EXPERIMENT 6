@@ -1,0 +1,27 @@
+                                          Assignment No: 6 NoSQL – ADMINISTRATION
+                                          
+                                          
+1.      Write a MongoDB query to create a user “CUSTOMER1” and grant the read role in the INVOICE database.
+
+> db.createUser({user:"customer2",pwd:"1234",roles:[{role:"read",db:"invoice"}]})
+Successfully added user: {
+	"user" : "customer2",
+	"roles" : [
+		{
+			"role" : "read",
+			"db" : "invoice"
+		}
+	]
+}
+
+
+
+2.      Write a MongoDB query to create the backup for the INVOICE database.
+
+
+
+
+
+
+
+3.      Write a MongoDB query to restore a particular database or a collection.                                          
