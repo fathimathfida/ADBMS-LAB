@@ -15,13 +15,53 @@ Successfully added user: {
 }
 
 
-
+----------------------------------------------------------------------------------------------------------------------------------------------
 2.      Write a MongoDB query to create the backup for the INVOICE database.
 
+ksb@ksb-ThinkCentre-Edge72:~$ mongodump --db invoice
+2023-06-15T15:33:51.396+0530	writing invoice.product to 
+2023-06-15T15:33:51.396+0530	writing invoice.customer to 
+2023-06-15T15:33:51.396+0530	done dumping invoice.product (5 documents)
+2023-06-15T15:33:51.396+0530	done dumping invoice.customer (4 documents)
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+3. Write a MongoDB query to restore a particular database or a collection.                                          
+
+> show dbs
+admin    0.000GB
+config   0.000GB
+invoice  0.000GB
+local    0.000GB
+test     0.000GB
+
+> use invoice
+switched to db invoice
+> db.dropDatabase()
+{ "dropped" : "invoice", "ok" : 1 }
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+test    0.000GB
+
+ksb@ksb-ThinkCentre-Edge72:~$ mongorestore --db invoice dump/invoice
+2023-06-15T15:45:41.361+0530	the --db and --collection args should only be used when restoring from a BSON file. Other uses are deprecated and will not exist in the future; use --nsInclude instead
+2023-06-15T15:45:41.361+0530	building a list of collections to restore from dump/invoice dir
+2023-06-15T15:45:41.362+0530	reading metadata for invoice.customer from dump/invoice/customer.metadata.json
+2023-06-15T15:45:41.734+0530	reading metadata for invoice.product from dump/invoice/product.metadata.json
+2023-06-15T15:45:41.734+0530	restoring invoice.customer from dump/invoice/customer.bson
+2023-06-15T15:45:41.911+0530	restoring invoice.product from dump/invoice/product.bson
+2023-06-15T15:45:41.924+0530	no indexes to restore
+2023-06-15T15:45:41.924+0530	finished restoring invoice.customer (4 documents)
+2023-06-15T15:45:41.924+0530	no indexes to restore
+2023-06-15T15:45:41.924+0530	finished restoring invoice.product (5 documents)
+2023-06-15T15:45:41.924+0530	done
+
+> show dbs
+admin    0.000GB
+config   0.000GB
+invoice  0.000GB
+local    0.000GB
+test     0.000GB
 
 
-
-
-
-
-3.      Write a MongoDB query to restore a particular database or a collection.                                          
